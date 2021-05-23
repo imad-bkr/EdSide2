@@ -135,21 +135,57 @@ a:hover {
 
 /* calendar */
 
+.calendar-main {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.calendar-box {
+    margin: 20px;
+    flex: 3 3;
+}
+.calendar-header {
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.calendar-title {
+    font-size: 2rem;
+    margin: 20px;
+}
+
+.calendar-nav {
+    font-size: 2rem;
+}
+
 .calendar-table {
     width: 100%;
-    height: calc(100vh - 128px);
+    height: calc(100vh - 250px);
+    margin: 10px 0 0;
+    border-collapse: collapse;
 }
-  
+
+.calendar-table th {
+    height: 1rem;
+    border: 1px solid #000;
+    background-color: rgb(35, 35, 95);
+    color: #fff;
+}
+
 .calendar-table td {
-    padding: 10px;
-    border: 1px solid #CCC;
+    padding: 5px;
+    border: 1px solid #ccc;
     vertical-align: top;
     width: 14.29%;
-    height: 20%;
+    height: calc(20%-1rem);
+    font-size: 0.75rem;
 }
 
 .calendar-table--6weeks td {
-    height: 16.66%;
+    height: calc(16.66%-1rem);
 }
 
 .calendar-weekday {
@@ -164,6 +200,23 @@ a:hover {
 
 .calendar-othermonth .calendar-day {
     opacity: 0.3;
+}
+
+.calendar-groups-box {
+    margin: 20px;
+    padding: 10px;
+    flex: 1 1;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.calendar-groups-list {
+    display: flex;
+    flex-flow: column;
+}
+
+.calendar-group {
+    margin: 10px;
 }
 
 /* tutoring */
@@ -280,7 +333,7 @@ main a:hover {
 }
 
 .profil {
-         display: flex;
+    display: flex;
 }
 
 .profil-pic {
