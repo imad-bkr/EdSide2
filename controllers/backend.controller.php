@@ -50,6 +50,18 @@ function getPageSettings() {
 
     if(Securite::verificationAccess()) {
         require_once "models/user.dao.php";
+
+        if(isset($_POST['submit']) && !empty($_POST['submit'])) {
+            $email = Securite::secureHTML($_POST['email']);
+
+            if(isset($_POST['password']) && !empty($_POST['password'])
+            && isset($_POST['c_password']) && !empty($_POST['c_password'])) {
+                
+            }
+
+            //UpdateUser();
+        }
+
         $title = "EdSide - Paramètres du compte";
         $desc = "Cette page vous permet de modifier vos paramètres utilisateur";
         $curr = "";
@@ -94,7 +106,7 @@ function getPageCalendar() {
         require 'models/Calendar/Month.php';
         require 'models/Calendar/Events.php';
         require_once "models/groups.dao.php";
-        
+
         $groupes = getGroupesFromDB();
         
         $bdd = connexionPDO();
