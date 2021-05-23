@@ -240,8 +240,8 @@ function getPageTutoringEditPost() {
                 $msg = "Veuillez remplir les champs manquants";
             }
         }
-
-        if(isset($_POST['delete']) && !empty($_POST['delete'])) {
+        
+        if (isset($_POST['delete']) && !empty($_POST['delete'])) {
             deleteAnnonceFromDB($idAnnonce);
             header("Location:" . URL . "tutoring/profil");
         }

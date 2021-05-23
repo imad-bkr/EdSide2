@@ -14,7 +14,7 @@
             Tags : <input type="text" name="tags" value="<?= $annonce['tag'] ?>">
         </div>
         <input class="edit-post-confirm" type="submit" name="edit" value="Valider">
-        <input class="edit-post-delete" type="submit" name="delete" value="Supprimer l'annonce" onclick="confirm('Etes vous sûrs ?')">
+        <input id="deleteBtn" class="edit-post-delete" type="submit" name="delete" value="Supprimer l'annonce">
     </form>
     <?php if($msg !== "L'annonce a bien modifiée") {?>
         <div class="invalid-post"><?= $msg; ?></div>
@@ -26,5 +26,6 @@
     $content = ob_get_clean();
     require "views/commons/template.php" 
 ?>
+
 
  
