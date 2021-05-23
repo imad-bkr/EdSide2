@@ -1,32 +1,19 @@
 <?php ob_start(); ?>
-<main class="edit-post-main">
-    <a class="edit-post-cancel" href="<?= URL ?>tutoring/profil">Annuler</a>
-    <form action="profil.php" method="post">
-        <div class="edit-post-tags">
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-        </div>
-        <div class="edit-post-content">
+<main class="new-post-main">
+    <a class="new-post-cancel" href="<?= URL ?>tutoring/profil">Annuler</a>
+    <form action="profil.php" method="POST">
+        <div class="new-post-title">
             Titre :
-            <input class="edit-post-title" type="text">
-            Description : 
-            <textarea class="edit-post-desc"></textarea>
+            <input class="new-post-title" type="text">
         </div>
-        <input class="edit-post-confirm" type="submit" value="Valider">
+        <div class="new-post-content">
+            Description : 
+            <textarea class="new-post-desc"></textarea>
+        </div>
+        <div class="new-post-tags">
+            Tags : <input type="text" name="tags">
+        </div>
+        <input class="new-post-confirm" type="submit" value="Valider">
     </form>
 </main>
 <?php
