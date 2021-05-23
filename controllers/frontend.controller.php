@@ -17,7 +17,7 @@ function getPagePasswordReset() {
     $desc = "Page d'oubli du mot de passe'";
     $css = "public/css/auth.css";
 
-    require_once "views/back/auth/password_reset.view.php";
+    require_once "views/front/password_reset.view.php";
 }
 
 function getPageInscription() {
@@ -47,5 +47,5 @@ function getPageInscription() {
         echo "Votre mot de passe n'a pas été correctement resaisi";
     }
     
-    require_once "views/back/auth/sign-in.view.php";
+    require_once "views/front/sign-in.view.php";
 }
