@@ -10,36 +10,19 @@
         </div>
     </aside>
     <section class="posts">
-        <a class="post" href="<?= URL ?>tutoring/view-post">
-            <div class="preview-profil">
-                <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
-                <p class="preview-profil-info">lorem</p>
-            </div>
-            <div class="post-body">
-                <h3 class="post-title">annonce</h3>
-                <span class="post-tag">Tag1</span> <span class="post-tag">Tag2</span> <span class="post-tag">Tag3</span>
-            </div>
-        </a>
-        <a class="post" href="<?= URL ?>tutoring/view-post">
-            <div class="preview-profil">
-                <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
-                <p class="preview-profil-info">lorem</p>
-            </div>
-            <div class="post-body">
-                <h3 class="post-title">annonce</h3>
-                <span class="post-tag">Tag1</span> <span class="post-tag">Tag2</span> <span class="post-tag">Tag3</span>
-            </div>
-        </a>
-        <a class="post" href="<?= URL ?>tutoring/view-post">
-            <div class="preview-profil">
-                <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
-                <p class="preview-profil-info">lorem</p>
-            </div>
-            <div class="post-body">
-                <h3 class="post-title">annonce</h3>
-                <span class="post-tag">Tag1</span> <span class="post-tag">Tag2</span> <span class="post-tag">Tag3</span>
-            </div>
-        </a>
+        <?php foreach($annonces as $annonce) : ?>
+            <a class="post" href="<?= URL ?>tutoring/view-post">
+                <div class="preview-profil">
+                    <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
+                </div>
+                <div class="post-body">
+                    <h3 class="post-title"><?= $annonce['titre'] ?></h3>
+                    <p class="post-date">Publié le <?php $date = date_create($annonce['date']); echo date_format($date, "Y/m/d"); ?></p>
+                    <p class="post-description"><?= $annonce['description'] ?></p>
+                    <span class="post-tag"><?= $annonce['tag'] ?></span>
+                </div>
+            </a>
+        <?php endforeach ?>
     </section>
     <a class="browse-link-profil" href="<?= URL ?>tutoring/profil">Mon profil</a>
 </main>
