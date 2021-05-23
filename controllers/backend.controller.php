@@ -123,7 +123,21 @@ function getPageCalendarEvent() {
     }   
 
     if(Securite::verificationAccess()) {
-        require 'models/Calendar/Month.php';
+        require 'models/Calendar/Events.php';
+
+        $bdd = connexionPDO();
+        $events = new Calendar\Events($bdd);
+
+        if (!isset($_GET['id'])) {
+            header('Location:'. URL . 'calendar');
+        }
+
+        try {
+            $event = $events->find($_GET['id']);
+        } catch (\Exception $e) {
+            header('Location:'. URL . 'calendar');
+        }
+
         
         $title = "EdSide - Evenement";
         $desc = "Evenement";

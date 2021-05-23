@@ -49,9 +49,10 @@ class Events {
      * @return Event
      * @throws \Exception
      */
-    public function find (int $id): Event {
-        $statement = $this->pdo->query("SELECT * FROM events WHERE id = $id LIMIT 1");
-        $statement->setFetchMode(\PDO::FETCH_CLASS, Event::class);
+    public function find (int $id): \Calendar\Event {
+        require "Event.php";
+        $statement = $this->pdo->query("SELECT * FROM evenements WHERE id_evenement = $id LIMIT 1");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, \Calendar\Event::class);
         $result = $statement->fetch();
         if ($result === false) {
             throw new \Exception('Aucun résultat n\'a été trouvé');
