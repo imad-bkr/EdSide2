@@ -156,9 +156,21 @@ function getPageCalendarNewEvent() {
         header("Location:".URL."accueil");
     }
 
+    function getGroupesFromDB(){
+        $bdd = connexionPDO();
+        $req = "SELECT nom FROM groupe";
+        $stmt = $bdd->prepare($req);
+        $stmt->execute();
+        $groupes = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $groupes;
+    }
+
     require 'models/Calendar/Events.php';
     require 'models/Calendar/Event.php';
     require 'models/Calendar/EventValidator.php';
+
+    $groupes = getGroupesFromDB();
 
     $data = [
         'date'  => $_GET['date'] ?? date('Y-m-d'),

@@ -114,5 +114,4 @@ class Events {
     public function delete (Event $event): bool {
         return false;
     }
-
 }

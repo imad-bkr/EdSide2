@@ -39,6 +39,14 @@
             <textarea name="description" id="description"><?= isset($data['description']) ? Securite::secureHTML(($data['description'])) : ''; ?></textarea>
         </div>
         <div>
+        <label for="groupe">Groupe associé</label>
+        <select name="groupe" id="groupe">
+            <?php foreach($groupes as $groupe) : ?>
+                <option value="<?= $groupe['nom']?>"><?= $groupe['nom'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        </div>
+        <div>
             <button>Ajouter l'évènement</button>
         </div>
     </form>
