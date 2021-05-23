@@ -40,11 +40,65 @@ function getPageConnexion() {
     require_once "views/back/auth/log-in.view.php";
 }
 
-/*PARAMETERS */
+/* SETTINGS */
+
+function getPageSettings() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }   
+
+    if(Securite::verificationAccess()) {
+        require_once "models/user.dao.php";
+        $title = "EdSide - Paramètres du compte";
+        $desc = "Cette page vous permet de modifier vos paramètres utilisateur";
+        $css = "public/css/template.css";
+
+        require_once "views/back/settings/settings.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
 
 /* SIMULATOR */
 
+function getPageSimulator() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }   
+
+    if(Securite::verificationAccess()) {
+        require_once "models/simulator.dao.php";
+        $title = "EdSide - Simulateur de notes";
+        $desc = "Simulez vos notes pour savoir si vous validez votre année ou pas";
+        $css = "public/css/template.css";
+
+        require_once "views/back/simulator/simulator.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
 /* CALENDAR */
+
+function getPageCalendar() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }   
+
+    if(Securite::verificationAccess()) {
+        require_once "models/calendar.dao.php";
+        $title = "EdSide - Calendrier";
+        $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
+        $css = "public/css/template.css";
+
+        require_once "views/back/calendar/calendar.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
 
 /* TUTORING */ 
 

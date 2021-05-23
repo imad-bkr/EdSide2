@@ -15,7 +15,7 @@
         <img class="logo-mini" src="<?= URL ?>public/img/logo.png" alt="EdSide">
         <div class="user"><?php echo $_SESSION['user'];?></div>
         <ul class="user-menu hidden">
-            <a href=""><li>Paramètres</li></a>
+            <a href="<?= URL ?>settings"><li>Paramètres</li></a>
             <a href=""><li>English</li></a>
             <form method="POST" action="">
                 <input type="hidden" name="deconnexion" value="true" />

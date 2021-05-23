@@ -16,6 +16,12 @@ try {
             break;
             case "password_reset": getPagePasswordReset();
             break;
+            case "settings": getPageSettings();
+            break;
+            case "simulator": getPageSimulator();
+            break;
+            case "calendar": getPageCalendar();
+            break;
             case "tutoring/browse": getPageTutoringBrowse();
             break;
             case "tutoring/profil": getPageTutoringProfil();
