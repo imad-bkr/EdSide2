@@ -80,14 +80,14 @@ class Events {
      * @param Event $event
      * @return bool
      */
-    public function create (Event $event): bool {
+    public function create (Event $event, int $idGroupe): bool {
         $statement = $this->pdo->prepare('INSERT INTO evenements (nom, description, date_debut, date_fin, id_groupe) VALUES (?, ?, ?, ?, ?)');
         return $statement->execute([
            $event->getName(),
            $event->getDescription(),
            $event->getStart()->format('Y-m-d H:i:s'),
            $event->getEnd()->format('Y-m-d H:i:s'),
-           $event->getIdGroup()
+           $event->$idGroupe
         ]);
     }
 
