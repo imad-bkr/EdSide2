@@ -60,4 +60,60 @@ class Events {
         return $result;
     }
 
+    /**
+     * @param Event $event
+     * @param array $data
+     * @return Event
+     */
+    public function hydrate (Event $event, array $data) {
+        $event->setName($data['name']);
+        $event->setDescription($data['description']);
+        $event->setStart(\DateTime::createFromFormat('Y-m-d H:i',
+            $data['date'] . ' ' . $data['start'])->format('Y-m-d H:i:s'));
+        $event->setEnd(\DateTime::createFromFormat('Y-m-d H:i',
+            $data['date'] . ' ' . $data['end'])->format('Y-m-d H:i:s'));
+        return $event;
+    }
+
+
+    /**
+     * Crée un évènement au niveau de la base de donnée
+     * @param Event $event
+     * @return bool
+     */
+    public function create (Event $event): bool {
+        $statement = $this->pdo->prepare('INSERT INTO evenements (nom, description, date_debut, date_fin) VALUES (?, ?, ?, ?)');
+        return $statement->execute([
+           $event->getName(),
+           $event->getDescription(),
+           $event->getStart()->format('Y-m-d H:i:s'),
+           $event->getEnd()->format('Y-m-d H:i:s'),
+        ]);
+    }
+
+    /**
+     * Met à jour un évènement au niveau de la base de données
+     * @param Event $event
+     * @return bool
+     */
+    public function update (Event $event): bool {
+        $statement = $this->pdo->prepare('UPDATE evenements SET nom = ?, description = ?, date_debut = ?, date_fin = ? WHERE id_evenement = ?');
+        return $statement->execute([
+            $event->getName(),
+            $event->getDescription(),
+            $event->getStart()->format('Y-m-d H:i:s'),
+            $event->getEnd()->format('Y-m-d H:i:s'),
+            $event->getId()
+        ]);
+    }
+
+    /**
+     * TODO: Supprime un évènement
+     * @param Event $event
+     * @return bool
+     */
+    public function delete (Event $event): bool {
+        return false;
+    }
+
 }
