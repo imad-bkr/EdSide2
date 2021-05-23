@@ -109,7 +109,7 @@ function getPageTutoringBrowse() {
     if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
         session_destroy();
         header("Location:".URL."accueil");
-    }   
+    }
 
     if(Securite::verificationAccess()) {
         require_once "models/tutoring.dao.php";
@@ -170,6 +170,11 @@ function getPageTutoringViewPost() {
     }   
     if(Securite::verificationAccess()) {
         require_once "models/tutoring.dao.php";
+
+        if(isset($_GET['id']) && !empty($_GET['id'])) {
+            $idAnnonce = Securite::secureHTML($_GET['id']);
+            $annonce = getAnnonceFromBD($idAnnonce);
+        }
 
         $title = "EdSide - Annonce";
         $desc = "Annonce";

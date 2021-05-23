@@ -9,3 +9,15 @@ function getAnnoncesFromBD() {
     $stmt->closeCursor();
     return $annonces;
 }
+
+function getAnnonceFromBD($idAnnonce) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM annonces
+    WHERE id_annonce = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":id", $idAnnonce, PDO::PARAM_INT);
+    $stmt->execute();
+    $annonce = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $annonce;
+}

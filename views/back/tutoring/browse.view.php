@@ -11,7 +11,7 @@
     </aside>
     <section class="posts">
         <?php foreach($annonces as $annonce) : ?>
-            <a class="post" href="<?= URL ?>tutoring/view-post">
+            <a class="post" href="<?= URL ?>tutoring/view-post&id=<?= $annonce['id_annonce'] ?>">
                 <div class="preview-profil">
                     <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
                 </div>
