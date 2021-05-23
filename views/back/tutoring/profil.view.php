@@ -38,6 +38,7 @@
                 <a class="post-edit" href="<?= URL ?>tutoring/edit-post"><?php echo file_get_contents("public/icons/edit.svg"); ?></a>
                 <span class="post-tag">Tag1</span> <span class="post-tag">Tag2</span> <span class="post-tag">Tag3</span>
             </div>
+            <button class="post-add">+ post</button>
         </section>
     </main>
     <script src="<?= URL ?>public/js/tutoring/profil.js"></script>
