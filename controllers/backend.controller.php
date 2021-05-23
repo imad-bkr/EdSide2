@@ -91,15 +91,20 @@ function getPageCalendar() {
     }   
 
     if(Securite::verificationAccess()) {
-        require_once "models/calendar.dao.php";
-        require 'models/Date/Month.php';
+        require 'models/Calendar/Month.php';
+        require 'models/Calendar/Events.php';
+        
+        $bdd = connexionPDO();
+        $events = new Calendar\Events($bdd);
 
-        $month = new App\Date\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
+        $month = new Calendar\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
         $start = $month->getStartingDay();
         $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
         $weeks = $month->getWeeks();
         $end = (clone $start)->modify('+' . (6 + 7 * ($weeks -1)) . ' days');
         
+        $events =  $events->getEventsBetweenByDay($start, $end);
+    
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
         $curr = "calendar";
@@ -118,8 +123,7 @@ function getPageCalendarNewEvent() {
     }   
 
     if(Securite::verificationAccess()) {
-        require_once "models/calendar.dao.php";
-        require 'models/Date/Month.php';
+        require 'models/Calendar/Month.php';
         
         $title = "EdSide - Nouvel évenement";
         $desc = "Créez un nouvel évenement";

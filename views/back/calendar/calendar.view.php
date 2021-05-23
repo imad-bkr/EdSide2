@@ -18,10 +18,16 @@
                 <tr>
                     <?php
                     foreach ($month->days as $k => $day) :
-                        $date = (clone $start)->modify("+" . ($k + $i * 7) . " days")
+                        $date = (clone $start)->modify("+" . ($k + $i * 7) . " days");
+                        $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
                     ?>
                         <td class="<?= $month->withinMonth($date) ? '' : 'calendar-othermonth'; ?>">
                             <div class="calendar-day"><?= $date->format('d'); ?></div>
+                            <?php foreach($eventsForDay as $event): ?>
+                                <div class="calendar-event">
+                                    <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <?= Securite::secureHTML(($event['nom'])); ?></a>
+                                </div>
+                            <?php endforeach; ?>
                         </td>
                     <?php endforeach; ?>
                 </tr>
