@@ -92,6 +92,10 @@ function getPageCalendar() {
 
     if(Securite::verificationAccess()) {
         require_once "models/calendar.dao.php";
+        require 'models/Date/Month.php';
+
+        $month = new App\Date\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
+        $start = $month->getStartingDay()->modify('last monday');
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
         $curr = "calendar";

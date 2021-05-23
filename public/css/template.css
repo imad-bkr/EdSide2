@@ -133,6 +133,39 @@ a:hover {
     flex: none;
 }
 
+/* calendar */
+
+.calendar-table {
+    width: 100%;
+    height: calc(100vh - 128px);
+}
+  
+.calendar-table td {
+    padding: 10px;
+    border: 1px solid #CCC;
+    vertical-align: top;
+    width: 14.29%;
+    height: 20%;
+}
+
+.calendar-table--6weeks td {
+    height: 16.66%;
+}
+
+.calendar-weekday {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.2em;
+}
+
+.calendar-day {
+    font-size: 1.3em;
+}
+
+.calendar-othermonth .calendar-day {
+    opacity: 0.3;
+}
+
 /* tutoring */
 
 main a:hover {
