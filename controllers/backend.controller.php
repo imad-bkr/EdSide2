@@ -72,6 +72,7 @@ function getPageSimulator() {
         require_once "models/simulator.dao.php";
         $title = "EdSide - Simulateur de notes";
         $desc = "Simulez vos notes pour savoir si vous validez votre année ou pas";
+        $curr = "simulator";
         $css = "public/css/template.css";
 
         require_once "views/back/simulator/simulator.view.php";
@@ -92,6 +93,7 @@ function getPageCalendar() {
         require_once "models/calendar.dao.php";
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
+        $curr = "calendar";
         $css = "public/css/template.css";
 
         require_once "views/back/calendar/calendar.view.php";
@@ -112,6 +114,7 @@ function getPageTutoringBrowse() {
         require_once "models/tutoring.dao.php";
         $title = "EdSide - Les annonces";
         $desc = "Cette page vous permet de chercher un parrain ou un filleul!";
+        $curr = "tutoring";
         $css = "public/css/template.css";
 
         require_once "views/back/tutoring/browse.view.php";
@@ -130,6 +133,7 @@ function getPageTutoringProfil() {
 
         $title = "EdSide - Profil parrainage";
         $desc = "Voici votre espace parrainage, créez une annonce pour commencer!";
+        $curr = "tutoring";
         $css = "public/css/template.css";
 
         require_once "views/back/tutoring/profil.view.php";
@@ -148,6 +152,7 @@ function getPageTutoringEditPost() {
 
         $title = "EdSide - Editer l'annonce";
         $desc = "Editez votre annonce";
+        $curr = "tutoring";
         $css = "public/css/template.css";
 
         require_once "views/back/tutoring/edit-post.view.php";
@@ -166,6 +171,7 @@ function getPageTutoringViewPost() {
 
         $title = "EdSide - Annonce";
         $desc = "Annonce";
+        $curr = "tutoring";
         $css = "public/css/template.css";
 
         require_once "views/back/tutoring/view-post.view.php";
