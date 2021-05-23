@@ -52,6 +52,7 @@ function getPageSettings() {
         require_once "models/user.dao.php";
         $title = "EdSide - Paramètres du compte";
         $desc = "Cette page vous permet de modifier vos paramètres utilisateur";
+        $curr = "";
         $css = "public/css/template.css";
 
         require_once "views/back/settings/settings.view.php";
