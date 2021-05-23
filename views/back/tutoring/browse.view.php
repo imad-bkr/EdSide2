@@ -1,12 +1,18 @@
 <?php ob_start(); ?>
 <main class="browse-main">
     <aside class="sidebar">
-        <div class="switch mentor-mentee">
-            <input id="" class="" type="checkbox" name="">
-            <label for="">parrain/fillot</label>
+        <div class="parrain-fillot">
+            Parrain:
+            <input class="parrain-checkbox" type="checkbox" name="parrain">
+            Fillot:
+            <input class="fillot-checkbox" type="checkbox" name="fillot">
         </div>
-        <div class="tags">
-            <span class="post-tag tag-filter">Tag1</span> <span class="post-tag tag-filter">Tag2</span> <span class="post-tag tag-filter">Tag3</span>
+        <div class="search-tags">
+            Recherche par mot-clé:
+            <form action="#" method="POST">
+                <input type="search" name="bytags" id="">
+                <input type="submit" name="search" value="rechercher">
+            </form>
         </div>
     </aside>
     <section class="posts">
