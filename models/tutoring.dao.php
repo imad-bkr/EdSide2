@@ -21,3 +21,17 @@ function getAnnonceFromBD($idAnnonce) {
     $stmt->closeCursor();
     return $annonce;
 }
+
+function addAnnonceDB($title, $desc, $tags, $idUser) {
+    $bdd = connexionPDO();
+    $req = "INSERT INTO annonces
+    (titre, date, description, tag, id_user) 
+    VALUES (:title, now(), :desc, :tags, :id)";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+    $stmt->bindValue(":desc", $desc, PDO::PARAM_STR);
+    $stmt->bindValue(":tags", $tags, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}

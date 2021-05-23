@@ -178,7 +178,24 @@ function getPageTutoringNewPost() {
         header("Location:". URL ."accueil");
     }   
     if(Securite::verificationAccess()) {
+        require_once "models/user.dao.php";
         require_once "models/tutoring.dao.php";
+
+        
+        if(isset($_POST['submit']) && !empty($_POST['submit'])) {
+            if(isset($_POST['title']) && !empty($_POST['title'])
+            && isset($_POST['desc']) && !empty($_POST['desc'])
+            && isset($_POST['tags']) && !empty($_POST['tags'])) {
+                $title = Securite::secureHTML($_POST['title']);
+                $desc = Securite::secureHTML($_POST['desc']);
+                $tags = Securite::secureHTML($_POST['tags']);
+                $user = getIdUser($_SESSION['user']);
+                addAnnonceDB($title, $desc, $tags, $user['id_user']);
+                echo "L'annonce a bien ajoutée";
+            } else {
+                echo "Veuillez remplir les champs manquants";
+            }
+        }
 
         $title = "EdSide - Nouvelle annonce";
         $desc = "Créez votre annonce!";

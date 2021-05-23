@@ -37,4 +37,14 @@ function isConnexionValid($username, $password) {
     } catch(Exception $e) {};
 }
 
-    
+function getIdUser($username) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM utilisateurs
+    WHERE username = :username";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":username", $username, PDO::PARAM_STR);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $user;
+}
