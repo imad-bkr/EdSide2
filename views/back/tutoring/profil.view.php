@@ -33,7 +33,7 @@
                 <p><?= $annonce['titre'] ?></p>
                 <p>Le <?php $date = date_create($annonce['date']); echo date_format($date, "Y/m/d"); ?></p>
                 <p><?= $annonce['description'] ?></p>
-                <a class="post-edit" href="<?= URL ?>tutoring/edit-post"><?php echo file_get_contents("public/icons/edit.svg"); ?></a>
+                <a class="post-edit" href="<?= URL ?>tutoring/edit-post&id=<?= $annonce['id_annonce'] ?>"><?php echo file_get_contents("public/icons/edit.svg"); ?></a>
                 <span class="post-tag"><?= $annonce['tag'] ?></span>
             </div>
         <?php endforeach; ?>

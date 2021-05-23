@@ -47,3 +47,27 @@ function getMyAnnoncesFromBD($idUser) {
     $stmt->closeCursor();
     return $mesAnnonces;
 }
+
+function UpdateAnnonceDB($title, $desc, $tags, $idAnnonce) {
+    $bdd = connexionPDO();
+    $req = "UPDATE annonces
+    SET titre = :title, date = now(), description = :desc, tag = :tags
+    WHERE id_annonce = :idAnnonce";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+    $stmt->bindValue(":desc", $desc, PDO::PARAM_STR);
+    $stmt->bindValue(":tags", $tags, PDO::PARAM_STR);
+    $stmt->bindValue(":idAnnonce", $idAnnonce, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}
+
+function deleteAnnonceFromDB($idAnnonce) {
+    $bdd = connexionPDO();
+    $req = "DELETE FROM annonces
+    WHERE id_annonce = :idAnnonce";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":idAnnonce", $idAnnonce, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}

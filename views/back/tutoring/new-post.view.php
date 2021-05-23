@@ -15,6 +15,9 @@
         </div>
         <input class="new-post-confirm" type="submit" name="submit" value="Valider">
     </form>
+    <?php if($msg !== "") : ?>
+        <div class="invalid-post"><?= $msg; ?></div>
+    <?php endif; ?>
 </main>
 <?php
     $content = ob_get_clean();

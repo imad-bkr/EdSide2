@@ -185,7 +185,7 @@ function getPageTutoringNewPost() {
         require_once "models/user.dao.php";
         require_once "models/tutoring.dao.php";
 
-        
+        $msg = "";
         if(isset($_POST['submit']) && !empty($_POST['submit'])) {
             if(isset($_POST['title']) && !empty($_POST['title'])
             && isset($_POST['desc']) && !empty($_POST['desc'])
@@ -195,9 +195,9 @@ function getPageTutoringNewPost() {
                 $tags = Securite::secureHTML($_POST['tags']);
                 $user = getIdUser($_SESSION['user']);
                 addAnnonceDB($title, $desc, $tags, $user['id_user']);
-                echo "L'annonce a bien ajoutée";
+                header("Location:" . URL . "tutoring/profil");
             } else {
-                echo "Veuillez remplir les champs manquants";
+                $msg = "Veuillez remplir les champs manquants";
             }
         }
 
@@ -219,6 +219,32 @@ function getPageTutoringEditPost() {
     }   
     if(Securite::verificationAccess()) {
         require_once "models/tutoring.dao.php";
+
+        if(isset($_GET['id']) && !empty($_GET['id'])) {
+            $idAnnonce = Securite::secureHTML($_GET['id']);
+            $annonce = getAnnonceFromBD($idAnnonce);
+        }
+
+        $msg = "";
+        if(isset($_POST['edit']) && !empty($_POST['edit'])) {
+            if(isset($_POST['title']) && !empty($_POST['title'])
+            && isset($_POST['desc']) && !empty($_POST['desc'])
+            && isset($_POST['tags']) && !empty($_POST['tags'])) {
+                $title = Securite::secureHTML($_POST['title']);
+                $desc = Securite::secureHTML($_POST['desc']);
+                $tags = Securite::secureHTML($_POST['tags']);
+                UpdateAnnonceDB($title, $desc, $tags, $idAnnonce);
+                $annonce = getAnnonceFromBD($idAnnonce);
+                $msg = "L'annonce a bien modifiée";
+            } else {
+                $msg = "Veuillez remplir les champs manquants";
+            }
+        }
+
+        if(isset($_POST['delete']) && !empty($_POST['delete'])) {
+            deleteAnnonceFromDB($idAnnonce);
+            header("Location:" . URL . "tutoring/profil");
+        }
 
         $title = "EdSide - Editer l'annonce";
         $desc = "Editez votre annonce";

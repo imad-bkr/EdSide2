@@ -1,33 +1,26 @@
 <?php ob_start(); ?>
 <main class="edit-post-main">
-    <a class="edit-post-cancel" href="<?= URL ?>tutoring/profil">Annuler</a>
-    <form action="profil.php" method="post">
-        <div class="edit-post-tags">
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
-            <div class="post-tag">
-                <input class="post-tag" type="checkbox">
-                <label for="">tag</label>
-            </div>
+    <a class="edit-post-cancel" href="<?= URL ?>tutoring/profil">Retour au profil</a>
+    <form action="#" method="POST">
+        <div class="edit-post-title">
+            Titre :
+            <input class="edit-post-title" type="text" name="title" value="<?= $annonce['titre'] ?>">
         </div>
         <div class="edit-post-content">
-            Titre :
-            <input class="edit-post-title" type="text">
             Description : 
-            <textarea class="edit-post-desc"></textarea>
+            <textarea class="edit-post-desc" name="desc" ><?= $annonce['description'] ?></textarea>
         </div>
-        <input class="edit-post-confirm" type="submit" value="Valider">
+        <div class="edit-post-tags">
+            Tags : <input type="text" name="tags" value="<?= $annonce['tag'] ?>">
+        </div>
+        <input class="edit-post-confirm" type="submit" name="edit" value="Valider">
+        <input class="edit-post-delete" type="submit" name="delete" value="Supprimer l'annonce" onclick="confirm('Etes vous sûrs ?')">
     </form>
+    <?php if($msg !== "L'annonce a bien modifiée") {?>
+        <div class="invalid-post"><?= $msg; ?></div>
+    <?php } else { ?>
+        <div class="valid-post"><?= $msg; ?></div>
+    <?php } ?>
 </main>
 <?php
     $content = ob_get_clean();
