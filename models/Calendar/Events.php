@@ -65,13 +65,14 @@ class Events {
      * @param array $data
      * @return Event
      */
-    public function hydrate (Event $event, array $data) {
+    public function hydrate (Event $event, array $data, $idGroup) {
         $event->setName($data['name']);
         $event->setDescription($data['description']);
         $event->setStart(\DateTime::createFromFormat('Y-m-d H:i',
             $data['date'] . ' ' . $data['start'])->format('Y-m-d H:i:s'));
         $event->setEnd(\DateTime::createFromFormat('Y-m-d H:i',
             $data['date'] . ' ' . $data['end'])->format('Y-m-d H:i:s'));
+        $event->setIdGroup($idGroup);
         return $event;
     }
 
@@ -80,14 +81,14 @@ class Events {
      * @param Event $event
      * @return bool
      */
-    public function create (Event $event, int $idGroupe): bool {
+    public function create (Event $event): bool {
         $statement = $this->pdo->prepare('INSERT INTO evenements (nom, description, date_debut, date_fin, id_groupe) VALUES (?, ?, ?, ?, ?)');
         return $statement->execute([
            $event->getName(),
            $event->getDescription(),
            $event->getStart()->format('Y-m-d H:i:s'),
            $event->getEnd()->format('Y-m-d H:i:s'),
-           $event->$idGroupe
+           $event->getIdGroup()
         ]);
     }
 

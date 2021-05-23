@@ -166,16 +166,16 @@ function getPageCalendarNewEvent() {
         return $groupes;
     }
 
-    function getIdGroupeFromDB($groupe){
+    function getGroupeFromDB($group){
         $bdd = connexionPDO();
-        $req = "SELECT id_groupe FROM groupe
+        $req = "SELECT * FROM groupe
         WHERE nom = :nom";
         $stmt = $bdd->prepare($req);
-        $stmt->bindValue(":nom", $groupe, PDO::PARAM_STR);
+        $stmt->bindValue(":nom", $group, PDO::PARAM_STR);
         $stmt->execute();
-        $idGroupe = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $groupe = $stmt->fetch(\PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-        return $idGroupe;
+        return $groupe;
     }
 
     if(Securite::verificationAccess()) {
@@ -199,12 +199,13 @@ function getPageCalendarNewEvent() {
             $data = $_POST;
             $validator = new \Calendar\EventValidator();
             $errors = $validator->validates($_POST);
-            $idGroupe = getIdGroupeFromDB(Securite::secureHTML($_POST['groupe']));
+            $group = Securite::secureHTML($_POST['groupe']);
+            $idGrp = getGroupeFromDB($group);
             if (empty($errors)) {
                 $bdd = connexionPDO();
                 $events = new \Calendar\Events($bdd);
-                $event = $events->hydrate(new \Calendar\Event(), $data);
-                $events->create($event, $idGroupe['id_groupe']);
+                $event = $events->hydrate(new \Calendar\Event(), $data, $idGrp['id_groupe']);
+                $events->create($event);
                 header('Location:'.URL. 'calendar');
                 exit();
             }

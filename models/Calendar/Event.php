@@ -16,7 +16,7 @@ class Event {
     public function getDescription (): string { return $this->description ?? ''; }
     public function getStart (): \DateTime { return new \DateTime($this->date_debut); }
     public function getEnd (): \DateTime { return new \DateTime($this->date_fin); }
-    public function getIdGroup (): int { return $this->id_evenement; }
+    public function getIdGroup (): int { return $this->id_groupe; }
 
     public function setName (string $nom) { $this->nom = $nom; }
     public function setDescription (string $description) { $this->description = $description; }
