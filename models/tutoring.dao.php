@@ -35,3 +35,15 @@ function addAnnonceDB($title, $desc, $tags, $idUser) {
     $stmt->execute();
     $stmt->closeCursor();
 }
+
+function getMyAnnoncesFromBD($idUser) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM annonces
+    WHERE id_user = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $mesAnnonces = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $mesAnnonces;
+}

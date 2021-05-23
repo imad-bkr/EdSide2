@@ -159,7 +159,11 @@ function getPageTutoringProfil() {
         header("Location:". URL ."accueil");
     }   
     if(Securite::verificationAccess()) {
+        require_once "models/user.dao.php";
         require_once "models/tutoring.dao.php";
+
+        $user = getIdUser($_SESSION['user']);
+        $mesAnnonces = getMyAnnoncesFromBD($user['id_user']);
 
         $title = "EdSide - Profil parrainage";
         $desc = "Voici votre espace parrainage, créez une annonce pour commencer!";
