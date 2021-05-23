@@ -2,7 +2,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
 }
@@ -26,19 +27,23 @@ a {
     color: inherit;
 }
 
+a:hover {
+    color: #ff9800;
+}
+
 /* header */
 
 .header {
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(7, 7, 61);
-    color: #FFF;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 60px;
     align-items: center;
     padding: 0 0 0 20px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    z-index: 5;
 }
 
 .user {
@@ -54,7 +59,7 @@ a {
 .user-menu {
     display: block;
     width: 250px;
-    color: #FFF;
+    color: #fff;
     position: absolute;
     right: 0;
     top: 60px;
@@ -64,10 +69,6 @@ a {
     line-height: 2rem;
 }
 
-.user-menu a:hover {
-    color: #FF9800;
-}
-
 /* navbar */
 
 .nav-bar {
@@ -75,6 +76,8 @@ a {
     display: flex;
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    z-index: 4;
 }
 
 .nav-element {
@@ -108,7 +111,7 @@ a {
     width: 100%;
     height: 3px;
     background: #ff9800;
-    transition: 0.12s
+    transition: 0.12s;
 }
 
 .nav-element:hover::after {
@@ -124,7 +127,7 @@ a {
 
 .footer {
     background: #1b1b1b;
-    color: #FFF;
+    color: #fff;
     margin-top: auto;
     padding: 30px;
     flex: none;
@@ -132,18 +135,161 @@ a {
 
 /* tutoring */
 
-.main {
+main a:hover {
+    color: #ff9800;
+}
+
+/* tutoring browse */
+
+.browse-main {
     display: flex;
+    position: relative;
     flex: 1 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.browse-link-profil {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background-color: rgb(7, 7, 61);
+    color: #fff;
+    border-bottom-left-radius: 20px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.15px;
 }
 
 .posts {
+    padding-top: 50px;
     flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post {
+    width: 95%;
+    height: 300px;
+    margin: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .sidebar {
-    width: 250px;
+    width: 400px;
     flex: none;
+    box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.2), 4px 0px 5px 0px rgba(0, 0, 0, 0.14), 1px 0px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* tutoring profil */
+
+.back-to-posts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    background-color: rgb(7, 7, 61);
+    color: #fff;
+    border-bottom-right-radius: 20px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+}
+
+.back-to-posts:hover {
+    color: #ff9800;
+}
+
+.profil-main {
+    display: flex;
+    position: relative;
+}
+
+.post-edit {
+    display: none;
+    position: absolute;
+    top: 0;
+    fill: #000;
+    color: #fff;
+    padding: 10px;
+}
+
+.my-post:hover .post-edit {
+    display: block;
+}
+
+.profil-edit {
+    border-bottom-right-radius: 20px;
+    left: 0;
+}
+
+.my-post:hover .post-edit {
+    right: 0;
+    border-bottom-left-radius: 20px;
+}
+
+.my-post:hover .post-edit svg:hover {
+    fill: #ff9800;
+}
+
+.profil-info {
+    position: relative;
+    margin: 70px 10px 0 20px;
+    width: 600px;
+    height: auto;
+    flex: 1 1;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.profil {
+         display: flex;
+}
+
+.profil-pic {
+    border-radius: 80%;
+    border: 1px solid black;
+    margin-right: 20px;
+}
+
+.contact-info {
+    resize: none;
+    background-color: #e8e8e8;
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+}
+
+.contact-info:read-only {
+    background-color: #fff;
+    border-color: #000;
+}
+
+.user-info {
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.my-posts {
+    height: auto;
+    margin: 70px 15px 0 15px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    flex: 2 2;
+}
+
+.my-posts h2 {
+    text-align: center;
+}
+
+.my-post {
+    position: relative;
+    border: 1px solid rgb(35, 35, 95);
+    margin: 10px;
 }
 
 /* useful */
