@@ -111,6 +111,27 @@ function getPageCalendar() {
     }
 }
 
+function getPageCalendarNewEvent() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }   
+
+    if(Securite::verificationAccess()) {
+        require_once "models/calendar.dao.php";
+        require 'models/Date/Month.php';
+        
+        $title = "EdSide - Nouvel évenement";
+        $desc = "Créez un nouvel évenement";
+        $curr = "calendar";
+        $css = "public/css/template.css";
+
+        require_once "views/back/calendar/new-event.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
 /* TUTORING */ 
 
 function getPageTutoringBrowse() {
