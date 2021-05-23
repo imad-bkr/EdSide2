@@ -75,7 +75,6 @@ class Events {
         return $event;
     }
 
-
     /**
      * Crée un évènement au niveau de la base de donnée
      * @param Event $event
