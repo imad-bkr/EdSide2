@@ -166,38 +166,36 @@ function getPageCalendarNewEvent() {
         return $groupes;
     }
 
-    require 'models/Calendar/Events.php';
-    require 'models/Calendar/Event.php';
-    require 'models/Calendar/EventValidator.php';
-
-    $groupes = getGroupesFromDB();
-
-    $data = [
-        'date'  => $_GET['date'] ?? date('Y-m-d'),
-        'start' => date('H:i'),
-        'end'   => date('H:i')
-    ];
-    $validator = new \Calendar\Validator($data);
-    if (!$validator->validate('date', 'date')) {
-        $data['date'] = date('Y-m-d');
-    }
-    $errors = [];
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $data = $_POST;
-        $validator = new \Calendar\EventValidator();
-        $errors = $validator->validates($_POST);
-        if (empty($errors)) {
-            $bdd = connexionPDO();
-            $events = new \Calendar\Events($bdd);
-            $event = $events->hydrate(new \Calendar\Event(), $data);
-            $events->create($event);
-            header('Location:'.URL. 'calendar');
-            exit();
-        }
-    }   
-
     if(Securite::verificationAccess()) {
-        require 'models/Calendar/Month.php';
+        require 'models/Calendar/Events.php';
+        require 'models/Calendar/Event.php';
+        require 'models/Calendar/EventValidator.php'; 
+
+        $groupes = getGroupesFromDB();
+
+        $data = [
+            'date'  => $_GET['date'] ?? date('Y-m-d'),
+            'start' => date('H:i'),
+            'end'   => date('H:i')
+        ];
+        $validator = new \Calendar\Validator($data);
+        if (!$validator->validate('date', 'date')) {
+            $data['date'] = date('Y-m-d');
+        }
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $validator = new \Calendar\EventValidator();
+            $errors = $validator->validates($_POST);
+            if (empty($errors)) {
+                $bdd = connexionPDO();
+                $events = new \Calendar\Events($bdd);
+                $event = $events->hydrate(new \Calendar\Event(), $data);
+                $events->create($event);
+                header('Location:'.URL. 'calendar');
+                exit();
+            }
+        }  
         
         $title = "EdSide - Nouvel évenement";
         $desc = "Créez un nouvel évenement";
