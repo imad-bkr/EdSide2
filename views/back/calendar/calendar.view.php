@@ -25,7 +25,7 @@
                             <div class="calendar-day"><?= $date->format('d'); ?></div>
                             <?php foreach($eventsForDay as $event): ?>
                                 <div class="calendar-event">
-                                    <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <?= Securite::secureHTML(($event['nom'])); ?></a>
+                                    <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
                                 </div>
                             <?php endforeach; ?>
                         </td>

@@ -116,6 +116,26 @@ function getPageCalendar() {
     }
 }
 
+function getPageCalendarEvent() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }   
+
+    if(Securite::verificationAccess()) {
+        require 'models/Calendar/Month.php';
+        
+        $title = "EdSide - Evenement";
+        $desc = "Evenement";
+        $curr = "calendar";
+        $css = "public/css/template.css";
+
+        require_once "views/back/calendar/event.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
 function getPageCalendarNewEvent() {
     if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
         session_destroy();
