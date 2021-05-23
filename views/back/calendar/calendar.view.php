@@ -43,8 +43,8 @@
                 <label for="">groupe</label>
             </div>
             </div>
-        <button class="calendar-add-event">Ajouter évènement</button>
-        <button class="calendar-add-group">Ajouter groupe</button>
+        <a class="calendar-add-event" href="<?= URL ?>calendar/edit-event">Ajouter évènement</a>
+        <a class="calendar-add-group" href="">Créer groupe</a>
     </div>
 </main>
 <?php

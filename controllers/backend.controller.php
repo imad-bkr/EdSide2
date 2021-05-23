@@ -95,7 +95,11 @@ function getPageCalendar() {
         require 'models/Date/Month.php';
 
         $month = new App\Date\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
-        $start = $month->getStartingDay()->modify('last monday');
+        $start = $month->getStartingDay();
+        $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
+        $weeks = $month->getWeeks();
+        $end = (clone $start)->modify('+' . (6 + 7 * ($weeks -1)) . ' days');
+        
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
         $curr = "calendar";
@@ -235,7 +239,7 @@ function getPageTutoringEditPost() {
                 $tags = Securite::secureHTML($_POST['tags']);
                 UpdateAnnonceDB($title, $desc, $tags, $idAnnonce);
                 $annonce = getAnnonceFromBD($idAnnonce);
-                $msg = "L'annonce a bien modifiée";
+                header("Location:" . URL . "tutoring/profil");
             } else {
                 $msg = "Veuillez remplir les champs manquants";
             }

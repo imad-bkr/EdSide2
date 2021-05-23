@@ -2,7 +2,9 @@
 
 namespace App\Date;
 
-class Month {
+class Month
+{
+
     public $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
     private $months = [
