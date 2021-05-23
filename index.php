@@ -24,11 +24,13 @@ try {
             break;
             case "tutoring/browse": getPageTutoringBrowse();
             break;
+            case "tutoring/view-post": getPageTutoringViewPost();
+            break;
             case "tutoring/profil": getPageTutoringProfil();
             break;
-            case "tutoring/edit-post": getPageTutoringEditPost();
+            case "tutoring/new-post": getPageTutoringNewPost();
             break;
-            case "tutoring/view-post": getPageTutoringViewPost();
+            case "tutoring/edit-post": getPageTutoringEditPost();
             break;
             case "error403": throw new Exception("Vous n'avez pas le droit d'accéder à ce dossier");
             break;

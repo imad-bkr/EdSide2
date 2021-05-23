@@ -129,6 +129,30 @@ function getPageTutoringBrowse() {
     }
 }
 
+function getPageTutoringViewPost() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:". URL ."accueil");
+    }   
+    if(Securite::verificationAccess()) {
+        require_once "models/tutoring.dao.php";
+
+        if(isset($_GET['id']) && !empty($_GET['id'])) {
+            $idAnnonce = Securite::secureHTML($_GET['id']);
+            $annonce = getAnnonceFromBD($idAnnonce);
+        }
+
+        $title = "EdSide - Annonce";
+        $desc = "Annonce";
+        $curr = "tutoring";
+        $css = "public/css/template.css";
+
+        require_once "views/back/tutoring/view-post.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
 function getPageTutoringProfil() {
     if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
         session_destroy();
@@ -143,6 +167,25 @@ function getPageTutoringProfil() {
         $css = "public/css/template.css";
 
         require_once "views/back/tutoring/profil.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
+function getPageTutoringNewPost() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:". URL ."accueil");
+    }   
+    if(Securite::verificationAccess()) {
+        require_once "models/tutoring.dao.php";
+
+        $title = "EdSide - Nouvelle annonce";
+        $desc = "Créez votre annonce!";
+        $curr = "tutoring";
+        $css = "public/css/template.css";
+
+        require_once "views/back/tutoring/new-post.view.php";
     } else {
         throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
     }
@@ -167,26 +210,3 @@ function getPageTutoringEditPost() {
     }
 }
 
-function getPageTutoringViewPost() {
-    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
-        session_destroy();
-        header("Location:". URL ."accueil");
-    }   
-    if(Securite::verificationAccess()) {
-        require_once "models/tutoring.dao.php";
-
-        if(isset($_GET['id']) && !empty($_GET['id'])) {
-            $idAnnonce = Securite::secureHTML($_GET['id']);
-            $annonce = getAnnonceFromBD($idAnnonce);
-        }
-
-        $title = "EdSide - Annonce";
-        $desc = "Annonce";
-        $curr = "tutoring";
-        $css = "public/css/template.css";
-
-        require_once "views/back/tutoring/view-post.view.php";
-    } else {
-        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
-    }
-}
