@@ -93,6 +93,9 @@ function getPageCalendar() {
     if(Securite::verificationAccess()) {
         require 'models/Calendar/Month.php';
         require 'models/Calendar/Events.php';
+        require_once "models/groups.dao.php";
+        
+        $groupes = getGroupesFromDB();
         
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
@@ -156,9 +159,8 @@ function getPageCalendarNewEvent() {
         header("Location:".URL."accueil");
     }
 
-    require_once "models/groups.dao.php";
-
     if(Securite::verificationAccess()) {
+        require_once "models/groups.dao.php";
         require 'models/Calendar/Events.php';
         require 'models/Calendar/Event.php';
         require 'models/Calendar/EventValidator.php'; 

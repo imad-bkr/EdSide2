@@ -24,7 +24,7 @@
                         <td class="<?= $month->withinMonth($date) ? '' : 'calendar-othermonth'; ?>">
                             <div class="calendar-day"><?= $date->format('d'); ?></div>
                             <?php foreach($eventsForDay as $event): ?>
-                                <div class="calendar-event">
+                                <div id="events" class="calendar-event">
                                     <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
                                 </div>
                             <?php endforeach; ?>
@@ -36,18 +36,12 @@
     </div>
     <div class="calendar-groups-box">
         <div class="calendar-groups-list">
+        <?php foreach($groupes as $groupe) : ?>
             <div class="calendar-group">
-                <input type="checkbox" checked>
-                <label for="">groupe</label>
+                <input class="checkbox" id="groupe" type="checkbox" checked>
+                <label for="groupe"><?= $groupe['nom'] ?></label>
             </div>
-            <div class="calendar-group">
-                <input type="checkbox" checked>
-                <label for="">groupe</label>
-            </div>
-            <div class="calendar-group">
-                <input type="checkbox" checked>
-                <label for="">groupe</label>
-            </div>
+        <?php endforeach; ?>
             </div>
         <a class="calendar-add-event" href="<?= URL ?>calendar/new-event">Ajouter évènement</a>
         <a class="calendar-add-group" href="">Créer groupe</a>
