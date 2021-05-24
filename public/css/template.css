@@ -269,6 +269,7 @@ a {
     align-items: center;
     flex: 1 0;
     padding: 20px;
+    border-right: 1px solid #ccc;
 }
 
 .preview-profil-pic {
@@ -286,8 +287,15 @@ a {
 }
 
 .post-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     flex: 3 0;
     padding: 20px;
+}
+
+.post-title {
+    font-size: 2rem;
 }
 
 .sidebar {

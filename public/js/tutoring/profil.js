@@ -32,7 +32,6 @@
         editContactInfoButton.classList.remove("hidden");
         cancelContactInfoButton.classList.add("hidden");
         validateContactInfoButton.classList.add("hidden");
-        // update db
     };
 
     editUserInfo = function () {
@@ -56,7 +55,6 @@
         editUserInfoButton.classList.remove("hidden");
         cancelUserInfoButton.classList.add("hidden");
         validateUserInfoButton.classList.add("hidden");
-        // update db
     };
 
     editContactInfoButton.addEventListener("click", editContactInfo);
