@@ -35,7 +35,7 @@ function getPageConnexion() {
             $_SESSION['access'] = "user";
             $_SESSION['user'] = $username;
             Securite::generateCookiePassword();
-            header("Location: tutoring/browse");
+            header("Location:" .URL. "calendar");
             exit();
         } else {
            $alert = "Nom d'utilisateur ou mot de passe invalide";

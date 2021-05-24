@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <main class="settings-main">
-    <a class="settings-cancel" href="<?= URL ?>tutoring/browse">Annuler</a>
+    <a class="settings-cancel" href="<?= URL ?>calendar">Annuler</a>
     <form class="settings-form" action="#" method="POST"> 
         <div>
             <label for="email">Email :</label>
