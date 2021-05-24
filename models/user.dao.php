@@ -75,3 +75,15 @@ function insertDescToUserInDB($description, $idUser) {
     $stmt->execute();
     $stmt->closeCursor();
 }
+
+function insertContactInfoToUserInDB($contact_info, $idUser) {
+    $bdd = connexionPDO();
+    $req = "UPDATE utilisateurs
+    SET contact_info = :contact
+    WHERE id_user = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":contact", $contact_info, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}

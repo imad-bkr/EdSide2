@@ -281,6 +281,12 @@ function getPageTutoringProfil() {
         $user = getIdUser($_SESSION['user']);
     }
 
+    if(isset($_POST['submit-contact']) && !empty($_POST['submit-contact'])) {
+        $contact_info = Securite::secureHTML($_POST['contact-informations']);
+        insertContactInfoToUserInDB($contact_info, $idUser);
+        $user = getIdUser($_SESSION['user']);
+    }
+
         $title = "EdSide - Profil parrainage";
         $desc = "Voici votre espace parrainage, créez une annonce pour commencer!";
         $curr = "tutoring";

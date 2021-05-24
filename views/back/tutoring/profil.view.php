@@ -8,12 +8,11 @@
             <input class="profil-pic-upload" type="file">
         </div>
         <form class="contact-info-box" action="" method="POST">
-            <textarea class="contact-info" readonly="readonly"><?= "Téléphone: +33XXXXX\nAdresse e-mail: example@yahoo.fr" ?>
-            </textarea>
+            <textarea placeholder="Informations de contact <?= "\n"?>(numéro de téléphone, adresse email...)" name="contact-informations" class="contact-info" readonly="readonly"><?php if($user['contact_info'] !== "") { echo $user['contact_info']; } else {echo ""; }?></textarea>
             <div class="contact-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
             <div class="contact-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
             <label class="contact-info-validate hidden">
-                <input class="hidden" type="submit">
+                <input class="hidden" type="submit" name="submit-contact">
                 <?php echo file_get_contents("public/icons/check.svg"); ?>
             </label>
         </form>
