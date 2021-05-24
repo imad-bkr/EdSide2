@@ -20,6 +20,11 @@ function getPageConnexion() {
             throw new Exception("Vous n'avez pas le droit d'être là!");
         }
     }
+
+    $success = "";
+    if (isset($_GET['success']) && !empty($_GET['success'])){
+        $success = "Votre compte a bien été crée";
+    }
         
     $alert = "";
     if(isset($_POST['username']) && !empty($_POST['username'])

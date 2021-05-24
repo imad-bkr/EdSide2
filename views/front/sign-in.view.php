@@ -35,9 +35,7 @@
             <input class="form-submit" type="submit" name="register" value="S'inscrire">
             <a href="<?php URL?>log-in">Déjà inscrit ? Se connecter</a>
         </div>
-        <?php if($msg === "Votre compte a bien été crée") { ?>
-            <div class="alert alert-success"><?= $msg ?></div>
-        <?php } elseif ($msg === "Veuillez remplir les champs manquants") { ?>
+        <?php if ($msg === "Veuillez remplir les champs manquants") { ?>
             <div class="alert alert-danger"><?= $msg ?></div>
         <?php } elseif ($msg === "Votre mot de passe n'a pas été correctement resaisi") { ?>
             <div class="alert alert-danger"><?= $msg ?></div>

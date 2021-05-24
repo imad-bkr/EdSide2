@@ -19,10 +19,15 @@
         <input class="form-submit" type="submit" value="Se connecter">
         <a href="sign-in">Nouveau ? Créer un compte</a>
         <?php if ($alert !== "") { ?>
-        <div class="alert alert-danger"> 
-            <?= $alert ?>
-        </div>
-    <?php } ?>
+            <div class="alert alert-danger"> 
+                <?= $alert ?>
+            </div>
+        <?php } ?>
+        <?php if ($success !== "") { ?>
+            <div class="alert alert-success"> 
+                <?= $success ?>
+            </div>
+        <?php } ?>
     </form>
 </body>
 </html>

@@ -40,7 +40,7 @@ function getPageInscription() {
             $groupe = Securite::secureHTML($_POST['groupe']);
             /* ajout de l'utilisateur dans la bdd */
             newUser($username, $email, $hashed, $promo, $groupe);
-            $msg = "Votre compte a bien été crée";
+            header('Location:'.URL. 'log-in&success=1');
         } else if (isset($_POST['password']) && !empty($_POST['password'])
         && isset($_POST['c_password']) && !empty($_POST['c_password'])
         && $_POST['c_password'] != $_POST['password']) {
