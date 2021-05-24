@@ -49,6 +49,12 @@
             <button>Modifier l'évènement</button>
         </div>
     </form>
+    <form method="POST" action="">
+        <div>
+            <input type="hidden" name="delete" value="1">
+            <input type="submit" value="Supprimer l'évenement">
+        </div>
+    </form>
 </main>
 <?php
     $content = ob_get_clean();

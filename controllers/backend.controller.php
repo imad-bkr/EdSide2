@@ -129,6 +129,11 @@ function getPageCalendar() {
         if (isset($_GET['created']) && !empty($_GET['created'])){
             $created = "L'évenement a bien été crée et ajouté au calendrier";
         }
+
+        $deleted = "";
+        if (isset($_GET['delete']) && !empty($_GET['delete'])){
+            $deleted = "L'évenement a été supprimé";
+        }
     
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
@@ -173,7 +178,7 @@ function getPageCalendarEvent() {
             'start'       => $event->getStart()->format('H:i'),
             'end'         => $event->getEnd()->format('H:i'),
             'description' => $event->getDescription(),
-            'id_groupe' => $event->getIdGroup()
+            'id_groupe'   => $event->getIdGroup()
         ];
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -189,6 +194,11 @@ function getPageCalendarEvent() {
                 header('Location:'.URL. 'calendar&success=1');
                 exit();
             }
+        }
+
+        if(isset($_POST['delete']) && !empty($_POST['delete'])) {
+            $events->delete($event);
+            header("Location:".URL."calendar&delete=1");
         }
 
         

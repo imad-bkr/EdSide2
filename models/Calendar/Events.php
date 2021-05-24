@@ -110,11 +110,14 @@ class Events {
     }
 
     /**
-     * TODO: Supprime un évènement
+     * Supprime un évènement
      * @param Event $event
      * @return bool
      */
     public function delete (Event $event): bool {
-        return false;
+        $statement = $this->pdo->prepare('DELETE FROM evenements WHERE id_evenement = ?');
+        return $statement->execute([
+            $event->getId()
+        ]);
     }
 }

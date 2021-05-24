@@ -7,6 +7,9 @@
         <?php if ($modified != "") : ?>
             <span><?= $modified ?></span>
         <?php endif; ?>
+        <?php if ($deleted != "") : ?>
+            <span><?= $deleted ?></span>
+        <?php endif; ?>
         <div class="calendar-header">
             <a class="calendar-nav" href="<?= URL ?>calendar&month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>">&lt;</a>
             <h1 class="calendar-title"><?= $month->toString(); ?></h1>
