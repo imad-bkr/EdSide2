@@ -2,28 +2,24 @@
 <main class="profil-main">
     <a class="back-to-posts" href="<?= URL ?>tutoring/browse">Retour aux annonces</a>
     <section class="profil-info">
-        <h1 class="profil-name">John Doe</h1>
+        <h1 class="profil-name"><?php echo $_SESSION['user'];?></h1>
         <div class="profil-pic-box">
             <img class="profil-pic" src="<?= URL ?>public/img/profil-pic.png" alt="photo de profil">
             <input class="profil-pic-upload" type="file">
         </div>
         <div class="contact-info-box">
-            <textarea class="contact-info" readonly="readonly">
-                Téléphone: +33XXXXX
-                Adresse e-mail: example@yahoo.fr
-            </textarea>
+            <textarea class="contact-info" readonly="readonly">Téléphone: +33XXXXX <?php echo "\nAdresse e-mail: example@yahoo.fr";?></textarea>
             <div class="contact-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
             <div class="contact-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
             <div class="contact-info-validate hidden"><?php echo file_get_contents("public/icons/check.svg"); ?></div>
         </div>
         <div class="user-info-box">
-            <textarea class="user-info" readonly="readonly">
-                Classe
-                Description
-            </textarea>
-            <div class="user-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
-            <div class="user-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
-            <div class="user-info-validate hidden"><?php echo file_get_contents("public/icons/check.svg"); ?></div>
+            <form action="#" method="POST">
+                <textarea name="desc" class="user-info" readonly="readonly">Description</textarea>
+                <div class="user-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
+                <div class="user-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
+                <div class="user-info-validate hidden"><?php echo file_get_contents("public/icons/check.svg"); ?></div>
+            </form>
         </div>
     </section>
     <section class="my-posts-box">
