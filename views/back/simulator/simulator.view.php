@@ -1,5 +1,8 @@
 <?php ob_start(); ?>
-<main>
+<main class="simulator-main">
+    <div>
+        Comming soon
+    </div>
 </main>
 <?php
     $content = ob_get_clean();

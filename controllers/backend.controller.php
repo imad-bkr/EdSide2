@@ -20,6 +20,11 @@ function getPageConnexion() {
             throw new Exception("Vous n'avez pas le droit d'être là!");
         }
     }
+
+    $success = "";
+    if (isset($_GET['success']) && !empty($_GET['success'])){
+        $success = "Votre compte a bien été crée";
+    }
         
     $alert = "";
     if(isset($_POST['username']) && !empty($_POST['username'])
@@ -119,6 +124,21 @@ function getPageCalendar() {
         $end = (clone $start)->modify('+' . (6 + 7 * ($weeks -1)) . ' days');
         
         $events =  $events->getEventsBetweenByDay($start, $end);
+
+        $modified = "";
+        if (isset($_GET['success']) && !empty($_GET['success'])){
+            $modified = "L'évenement a bien été modifié";
+        }
+
+        $created = "";
+        if (isset($_GET['created']) && !empty($_GET['created'])){
+            $created = "L'évenement a bien été crée et ajouté au calendrier";
+        }
+
+        $deleted = "";
+        if (isset($_GET['delete']) && !empty($_GET['delete'])){
+            $deleted = "L'évenement a été supprimé";
+        }
     
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
@@ -138,7 +158,9 @@ function getPageCalendarEvent() {
     }   
 
     if(Securite::verificationAccess()) {
+        require_once "models/groups.dao.php";
         require 'models/Calendar/Events.php';
+        require 'models/Calendar/EventValidator.php'; 
 
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
@@ -151,6 +173,37 @@ function getPageCalendarEvent() {
             $event = $events->find($_GET['id']);
         } catch (\Exception $e) {
             header('Location:'. URL . 'calendar');
+        }
+
+        $groupes = getGroupesFromDB();
+
+        $data = [
+            'name'        => $event->getName(),
+            'date'        => $event->getStart()->format('Y-m-d'),
+            'start'       => $event->getStart()->format('H:i'),
+            'end'         => $event->getEnd()->format('H:i'),
+            'description' => $event->getDescription(),
+            'id_groupe'   => $event->getIdGroup()
+        ];
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $validator = new Calendar\EventValidator();
+            $errors = $validator->validates($data);
+            $group = Securite::secureHTML($_POST['groupe']);
+            $idGrp = getGroupeFromDB($group);
+            if (empty($errors)) {
+                $events->hydrate($event, $data, $idGrp['id_groupe']);
+                $events->update($event);
+                $events->hydrate($event, $data, $idGrp['id_groupe']);
+                header('Location:'.URL. 'calendar&success=1');
+                exit();
+            }
+        }
+
+        if(isset($_POST['delete']) && !empty($_POST['delete'])) {
+            $events->delete($event);
+            header("Location:".URL."calendar&delete=1");
         }
 
         
@@ -200,7 +253,7 @@ function getPageCalendarNewEvent() {
                 $events = new \Calendar\Events($bdd);
                 $event = $events->hydrate(new \Calendar\Event(), $data, $idGrp['id_groupe']);
                 $events->create($event);
-                header('Location:'.URL. 'calendar');
+                header('Location:'.URL. 'calendar&created=1');
                 exit();
             }
         }  
@@ -272,7 +325,20 @@ function getPageTutoringProfil() {
         require_once "models/tutoring.dao.php";
 
         $user = getIdUser($_SESSION['user']);
-        $mesAnnonces = getMyAnnoncesFromBD($user['id_user']);
+        $idUser = $user['id_user'];
+        $mesAnnonces = getMyAnnoncesFromBD($idUser);
+
+    if(isset($_POST['submit-desc']) && !empty($_POST['submit-desc'])) {
+        $description = Securite::secureHTML($_POST['desc']);
+        insertDescToUserInDB($description, $idUser);
+        $user = getIdUser($_SESSION['user']);
+    }
+
+    if(isset($_POST['submit-contact']) && !empty($_POST['submit-contact'])) {
+        $contact_info = Securite::secureHTML($_POST['contact-informations']);
+        insertContactInfoToUserInDB($contact_info, $idUser);
+        $user = getIdUser($_SESSION['user']);
+    }
 
         $title = "EdSide - Profil parrainage";
         $desc = "Voici votre espace parrainage, créez une annonce pour commencer!";

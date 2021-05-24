@@ -8,26 +8,20 @@
             <input class="profil-pic-upload" type="file">
         </div>
         <form class="contact-info-box" action="" method="POST">
-            <textarea class="contact-info" readonly="readonly">
-                Téléphone: +33XXXXX
-                Adresse e-mail: example@yahoo.fr
-            </textarea>
+            <textarea placeholder="Informations de contact <?= "\n"?>(numéro de téléphone, adresse email...)" name="contact-informations" class="contact-info" readonly="readonly"><?php if($user['contact_info'] !== "") { echo $user['contact_info']; } else {echo ""; }?></textarea>
             <div class="contact-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
             <div class="contact-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
             <label class="contact-info-validate hidden">
-                <input class="hidden" type="submit">
+                <input class="hidden" type="submit" name="submit-contact">
                 <?php echo file_get_contents("public/icons/check.svg"); ?>
             </label>
         </form>
-        <form class="user-info-box">
-            <textarea class="user-info" readonly="readonly">
-                Classe
-                Description
-            </textarea>
+        <form class="user-info-box" action="" method="POST">
+            <textarea placeholder="Description" name="desc" class="user-info" readonly="readonly"><?php if($user['description_profil'] !== "") { echo $user['description_profil']; } else {echo ""; }?></textarea>
             <div class="user-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
             <div class="user-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
             <label class="user-info-validate hidden">
-                <input class="hidden" type="submit">
+                <input class="hidden" type="submit" name="submit-desc">
                 <?php echo file_get_contents("public/icons/check.svg"); ?>
             </label>
         </form>
@@ -39,7 +33,7 @@
                 <div class="my-post">
                     <h3><?= $annonce['titre'] ?></h3>
                     <p>Le <?php $date = date_create($annonce['date']);
-                            echo date_format($date, "Y/m/d"); ?></p>
+                            echo date_format($date, "d/m/Y"); ?></p>
                     <p><?= $annonce['description'] ?></p>
                     <span class="post-tag"><?= $annonce['tag'] ?></span>
                     <a class="post-edit" href="<?= URL ?>tutoring/edit-post&id=<?= $annonce['id_annonce'] ?>"><?php echo file_get_contents("public/icons/edit.svg"); ?></a>

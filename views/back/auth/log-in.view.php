@@ -18,11 +18,16 @@
         <a class="text-right" href="password_reset">Mot de passe oublié ?</a>
         <input class="form-submit" type="submit" value="Se connecter">
         <a href="sign-in">Nouveau ? Créer un compte</a>
+        <?php if ($alert !== "") { ?>
+            <div class="alert alert-danger"> 
+                <?= $alert ?>
+            </div>
+        <?php } ?>
+        <?php if ($success !== "") { ?>
+            <div class="alert alert-success"> 
+                <?= $success ?>
+            </div>
+        <?php } ?>
     </form>
-    <?php if ($alert !== "") { ?>
-        <div class="invalid-password"> 
-            <?= $alert ?>
-        </div>
-    <?php } ?>
 </body>
 </html>

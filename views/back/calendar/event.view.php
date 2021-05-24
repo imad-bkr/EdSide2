@@ -1,16 +1,60 @@
 <?php ob_start(); ?>
 <main class="event-main">
-    <h1><?= Securite::secureHTML(($event->getName())); ?></h1>
-
-    <ul>
-    <li>Date: <?= $event->getStart()->format('d/m/Y'); ?></li>
-    <li>Heure de démarrage: <?= $event->getStart()->format('H:i'); ?></li>
-    <li>Heure de fin: <?= $event->getEnd()->format('H:i'); ?></li>
-    <li>
-        Description:<br>
-        <?= Securite::secureHTML($event->getDescription()); ?>
-    </li>
-    </ul>
+    <a class="event-cancel" href="<?= URL ?>calendar">Annuler</a>
+    <?php if (!empty($errors)): ?>
+      <div class="invalid-inputs">
+        Merci de corriger vos erreurs
+      </div>
+    <?php endif; ?>
+    <h1>Modifier l'évènement <?= Securite::secureHTML(($event->getName())); ?></h1>
+    <form action="" method="POST">
+        <div>
+            <label for="name">Nom</label>
+            <input id="name" type="text" required class="event-name" name="name" value="<?= isset($data['name']) ? Securite::secureHTML($data['name']) : ''; ?>">
+            <?php if (isset($errors['name'])): ?>
+                <small><?= $errors['name']; ?></small>
+            <?php endif; ?>
+        </div>
+        <div>
+            <label for="date">Date</label>
+            <input id="date" type="date" required name="date" value="<?= isset($data['date']) ? Securite::secureHTML($data['date']) : ''; ?>">
+            <?php if (isset($errors['date'])): ?>
+                <small><?= $errors['date']; ?></small>
+            <?php endif; ?>
+        </div>
+        <div>
+            <label for="start">Démarrage</label>
+            <input id="start" type="time" required name="start" placeholder="HH:MM" value="<?= isset($data['start']) ? Securite::secureHTML($data['start']) : ''; ?>">
+            <?php if (isset($errors['start'])): ?>
+                <small><?= $errors['start']; ?></small>
+            <?php endif; ?>
+        </div>
+        <div>
+            <label for="end">Fin</label>
+            <input id="end" type="time" required name="end" placeholder="HH:MM" value="<?= isset($data['end']) ? Securite::secureHTML($data['end']) : ''; ?>">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea name="description" id="description"><?= isset($data['description']) ? Securite::secureHTML(($data['description'])) : ''; ?></textarea>
+        </div>
+        <div>
+        <label for="groupe">Groupe associé</label>
+        <select name="groupe" id="groupe">
+            <?php foreach($groupes as $groupe) : ?>
+                <option value="<?= $groupe['nom']?>" <?php if ($groupe['id_groupe'] == $event->getIdGroup()) {echo "selected";}?>><?= $groupe['nom']?></option>
+                <?php endforeach; ?>
+        </select>
+        </div>
+        <div>
+            <button>Modifier l'évènement</button>
+        </div>
+    </form>
+    <form method="POST" action="">
+        <div>
+            <input type="hidden" name="delete" value="1">
+            <input type="submit" value="Supprimer l'évenement">
+        </div>
+    </form>
 </main>
 <?php
     $content = ob_get_clean();

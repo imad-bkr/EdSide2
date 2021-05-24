@@ -8,7 +8,7 @@
     <?php endif; ?>
 
     <h1>Ajouter un évènement</h1>
-    <form action="#" method="POST">
+    <form action="" method="POST">
         <div>
             <label for="name">Nom</label>
             <input id="name" type="text" required class="event-name" name="name" value="<?= isset($data['name']) ? Securite::secureHTML($data['name']) : ''; ?>">

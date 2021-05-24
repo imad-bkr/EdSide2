@@ -25,7 +25,7 @@
                 </div>
                 <div class="post-body">
                     <h3 class="post-title"><?= $annonce['titre'] ?></h3>
-                    <p class="post-date">Publié le <?php $date = date_create($annonce['date']); echo date_format($date, "Y/m/d"); ?></p>
+                    <p class="post-date">Publié le <?php $date = date_create($annonce['date']); echo date_format($date, "d/m/Y"); ?></p>
                     <p class="post-description"><?= $annonce['description'] ?></p>
                     <span class="post-tag"><?= $annonce['tag'] ?></span>
                 </div>
