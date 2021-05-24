@@ -50,6 +50,18 @@ function getPageSettings() {
 
     if(Securite::verificationAccess()) {
         require_once "models/user.dao.php";
+
+        if(isset($_POST['submit']) && !empty($_POST['submit'])) {
+            $email = Securite::secureHTML($_POST['email']);
+
+            if(isset($_POST['password']) && !empty($_POST['password'])
+            && isset($_POST['c_password']) && !empty($_POST['c_password'])) {
+                
+            }
+
+            //UpdateUser();
+        }
+
         $title = "EdSide - Paramètres du compte";
         $desc = "Cette page vous permet de modifier vos paramètres utilisateur";
         $curr = "";
@@ -91,21 +103,114 @@ function getPageCalendar() {
     }   
 
     if(Securite::verificationAccess()) {
-        require_once "models/calendar.dao.php";
-        require 'models/Date/Month.php';
+        require 'models/Calendar/Month.php';
+        require 'models/Calendar/Events.php';
+        require_once "models/groups.dao.php";
 
-        $month = new App\Date\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
+        $groupes = getGroupesFromDB();
+        
+        $bdd = connexionPDO();
+        $events = new Calendar\Events($bdd);
+
+        $month = new Calendar\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
         $start = $month->getStartingDay();
         $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
         $weeks = $month->getWeeks();
         $end = (clone $start)->modify('+' . (6 + 7 * ($weeks -1)) . ' days');
         
+        $events =  $events->getEventsBetweenByDay($start, $end);
+    
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
         $curr = "calendar";
         $css = "public/css/template.css";
 
         require_once "views/back/calendar/calendar.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
+function getPageCalendarEvent() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }   
+
+    if(Securite::verificationAccess()) {
+        require 'models/Calendar/Events.php';
+
+        $bdd = connexionPDO();
+        $events = new Calendar\Events($bdd);
+
+        if (!isset($_GET['id'])) {
+            header('Location:'. URL . 'calendar');
+        }
+
+        try {
+            $event = $events->find($_GET['id']);
+        } catch (\Exception $e) {
+            header('Location:'. URL . 'calendar');
+        }
+
+        
+        $title = "EdSide - Evenement";
+        $desc = "Evenement";
+        $curr = "calendar";
+        $css = "public/css/template.css";
+
+        require_once "views/back/calendar/event.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+}
+
+function getPageCalendarNewEvent() {
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+        session_destroy();
+        header("Location:".URL."accueil");
+    }
+
+    if(Securite::verificationAccess()) {
+        require_once "models/groups.dao.php";
+        require 'models/Calendar/Events.php';
+        require 'models/Calendar/Event.php';
+        require 'models/Calendar/EventValidator.php'; 
+
+        $groupes = getGroupesFromDB();
+
+        $data = [
+            'date'  => $_GET['date'] ?? date('Y-m-d'),
+            'start' => date('H:i'),
+            'end'   => date('H:i')
+        ];
+        $validator = new \Calendar\Validator($data);
+        if (!$validator->validate('date', 'date')) {
+            $data['date'] = date('Y-m-d');
+        }
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $validator = new \Calendar\EventValidator();
+            $errors = $validator->validates($_POST);
+            $group = Securite::secureHTML($_POST['groupe']);
+            $idGrp = getGroupeFromDB($group);
+            if (empty($errors)) {
+                $bdd = connexionPDO();
+                $events = new \Calendar\Events($bdd);
+                $event = $events->hydrate(new \Calendar\Event(), $data, $idGrp['id_groupe']);
+                $events->create($event);
+                header('Location:'.URL. 'calendar');
+                exit();
+            }
+        }  
+        
+        $title = "EdSide - Nouvel évenement";
+        $desc = "Créez un nouvel évenement";
+        $curr = "calendar";
+        $css = "public/css/template.css";
+
+        require_once "views/back/calendar/new-event.view.php";
     } else {
         throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
     }

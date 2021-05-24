@@ -2,7 +2,7 @@
 <main class="profil-main">
     <a class="back-to-posts" href="<?= URL ?>tutoring/browse">Retour aux annonces</a>
     <section class="profil-info">
-        <h1 class="profil-name">John Doe</h1>
+        <h1 class="profil-name"><?php echo $_SESSION['user'];?></h1>
         <div class="profil-pic-box">
             <img class="profil-pic" src="<?= URL ?>public/img/profil-pic.png" alt="photo de profil">
             <input class="profil-pic-upload" type="file">

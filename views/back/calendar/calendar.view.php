@@ -18,10 +18,16 @@
                 <tr>
                     <?php
                     foreach ($month->days as $k => $day) :
-                        $date = (clone $start)->modify("+" . ($k + $i * 7) . " days")
+                        $date = (clone $start)->modify("+" . ($k + $i * 7) . " days");
+                        $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
                     ?>
                         <td class="<?= $month->withinMonth($date) ? '' : 'calendar-othermonth'; ?>">
                             <div class="calendar-day"><?= $date->format('d'); ?></div>
+                            <?php foreach($eventsForDay as $event): ?>
+                                <div id="events" class="calendar-event">
+                                    <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
+                                </div>
+                            <?php endforeach; ?>
                         </td>
                     <?php endforeach; ?>
                 </tr>
@@ -30,17 +36,10 @@
     </div>
     <div class="calendar-groups-box">
         <div class="calendar-groups-list">
+        <?php foreach($groupes as $groupe) : ?>
             <div class="calendar-group">
-                <input type="checkbox" checked>
-                <label for="">groupe</label>
-            </div>
-            <div class="calendar-group">
-                <input type="checkbox" checked>
-                <label for="">groupe</label>
-            </div>
-            <div class="calendar-group">
-                <input type="checkbox" checked>
-                <label for="">groupe</label>
+                <input class="checkbox" id="groupe" type="checkbox" checked>
+                <label for="groupe"><?= $groupe['nom'] ?></label>
             </div>
         </div>
         <div class="calendar-button-box">
