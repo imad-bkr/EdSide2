@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="header">
-        <img class="logo-mini" src="<?= URL ?>public/img/logo.png" alt="EdSide">
+        <a href="<?= URL ?>tutoring/browse"><img class="logo-mini" src="<?= URL ?>public/img/logo.png" alt="EdSide"></a>
         <div class="user"><?php echo $_SESSION['user'];?></div>
         <ul class="user-menu hidden">
             <a href="<?= URL ?>settings"><li>Paramètres</li></a>
