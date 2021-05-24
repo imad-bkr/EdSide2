@@ -180,6 +180,7 @@ function getPageCalendarEvent() {
         if (!isset($_GET['id'])) {
             header('Location:'. URL . 'calendar');
         }
+        
 
         try {
             $event = $events->find($_GET['id']);
