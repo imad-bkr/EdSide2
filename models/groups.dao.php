@@ -58,7 +58,7 @@ function getIdGroupeFromDB($groupe){
 
 function getGroupesUserFromDB($idUser) {
     $bdd = connexionPDO();
-    $req = "SELECT g.nom, g.id_groupe FROM groupe g
+    $req = "SELECT * FROM groupe g
     INNER JOIN appartenir a ON g.id_groupe = a.id_groupe  
     WHERE id_user = :id";
     $stmt = $bdd->prepare($req);

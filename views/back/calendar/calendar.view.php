@@ -47,8 +47,10 @@
         <div class="calendar-groups-list">
         <?php foreach($groupes as $groupe) : ?>
             <div class="calendar-group">
-                <input class="checkbox" id="groupe" type="checkbox" checked>
-                <label for="groupe"><?= $groupe['nom'] ?></label>
+                <?= $groupe['nom'] ?>
+            </div>
+            <div class="calendar-codegroup">
+                <?= $groupe['code'] ?>
             </div>
         <?php endforeach; ?>
         </div>
