@@ -23,28 +23,31 @@ function getPagePasswordReset() {
 function getPageInscription() {
     $title = "EdSide - Inscription";
     $desc = "Page d'inscription à EdSide";
-    $css = "public/css/auth.css";
-
-    if(isset($_POST['username']) && !empty($_POST['username'])
-    && isset($_POST['email']) && !empty($_POST['email'])
-    && isset($_POST['password']) && !empty($_POST['password'])
-    && isset($_POST['c_password']) && !empty($_POST['c_password'])
-    && ($_POST['c_password'] == $_POST['password'])
-    && isset($_POST['promo']) && !empty($_POST['promo']) 
-    && isset($_POST['groupe']) && !empty($_POST['groupe'])) {
-        $username = Securite::secureHTML($_POST['username']);
-        $email = Securite::secureHTML($_POST['email']);
-        $hashed = password_hash(Securite::secureHTML($_POST['password']), PASSWORD_DEFAULT);
-        $promo = Securite::secureHTML($_POST['promo']);
-        $groupe = Securite::secureHTML($_POST['groupe']);
-        /* ajout de l'utilisateur dans la bdd */
-        newUser($username, $email, $hashed, $promo, $groupe);
-
-        echo "Votre compte a bien été crée";
-    } else if (isset($_POST['password']) && !empty($_POST['password'])
-    && isset($_POST['c_password']) && !empty($_POST['c_password'])
-    && $_POST['c_password'] != $_POST['password']) {
-        echo "Votre mot de passe n'a pas été correctement resaisi";
+    $css = URL. "public/css/auth.css";
+    $msg = "";
+    if(isset($_POST['register'])) {
+        if(isset($_POST['username']) && !empty($_POST['username'])
+        && isset($_POST['email']) && !empty($_POST['email'])
+        && isset($_POST['password']) && !empty($_POST['password'])
+        && isset($_POST['c_password']) && !empty($_POST['c_password'])
+        && ($_POST['c_password'] == $_POST['password'])
+        && isset($_POST['promo']) && !empty($_POST['promo']) 
+        && isset($_POST['groupe']) && !empty($_POST['groupe'])) {
+            $username = Securite::secureHTML($_POST['username']);
+            $email = Securite::secureHTML($_POST['email']);
+            $hashed = password_hash(Securite::secureHTML($_POST['password']), PASSWORD_DEFAULT);
+            $promo = Securite::secureHTML($_POST['promo']);
+            $groupe = Securite::secureHTML($_POST['groupe']);
+            /* ajout de l'utilisateur dans la bdd */
+            newUser($username, $email, $hashed, $promo, $groupe);
+            $msg = "Votre compte a bien été crée";
+        } else if (isset($_POST['password']) && !empty($_POST['password'])
+        && isset($_POST['c_password']) && !empty($_POST['c_password'])
+        && $_POST['c_password'] != $_POST['password']) {
+            $msg = "Votre mot de passe n'a pas été correctement resaisi";
+        } else {
+            $msg = "Veuillez remplir les champs manquants";
+        }
     }
     
     require_once "views/front/sign-in.view.php";
