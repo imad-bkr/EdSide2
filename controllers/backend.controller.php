@@ -125,14 +125,15 @@ function getPageCalendar() {
             }
         }
 
-        $not_found = "";
+        $group = "";
         if(isset($_POST['rejoindre_groupe']) && !empty($_POST['rejoindre_groupe'])) {
             if (isset($_POST['code_groupe']) && !empty($_POST['code_groupe'])){
                 $code_groupe = Securite::secureHTML($_POST['code_groupe']);
                 if ($groupe = findGroupByCodeDB($code_groupe)){
-                    echo $groupe['code'];
+                    SetAppartenirIntoBD($groupe['id_groupe'], $idUser);
+                    $group = "Vous avez bien été ajouté au groupe";
                 } else {
-                    $not_found = "Ce groupe n'existe pas";
+                    $group = "Ce groupe n'existe pas";
                 }
             }
         }
