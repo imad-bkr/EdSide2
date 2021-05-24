@@ -138,7 +138,9 @@ function getPageCalendarEvent() {
     }   
 
     if(Securite::verificationAccess()) {
+        require_once "models/groups.dao.php";
         require 'models/Calendar/Events.php';
+        require 'models/Calendar/EventValidator.php'; 
 
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
@@ -151,6 +153,35 @@ function getPageCalendarEvent() {
             $event = $events->find($_GET['id']);
         } catch (\Exception $e) {
             header('Location:'. URL . 'calendar');
+        }
+
+        $groupes = getGroupesFromDB();
+
+        $data = [
+            'name'        => $event->getName(),
+            'date'        => $event->getStart()->format('Y-m-d'),
+            'start'       => $event->getStart()->format('H:i'),
+            'end'         => $event->getEnd()->format('H:i'),
+            'description' => $event->getDescription()
+        ];
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $validator = new Calendar\EventValidator();
+            $errors = $validator->validates($data);
+            $group = Securite::secureHTML($_POST['groupe']);
+            $idGrp = getGroupeFromDB($group);
+            if (empty($errors)) {
+                $events->hydrate($event, $data, $idGrp['id_groupe']);
+                $events->update($event);
+                header('Location:'.URL. 'calendar&success=1');
+                exit();
+            }
+        }
+
+        $msg = "";
+        if (isset($_GET['success']) && !empty($_GET['success'])){
+            $msg = "L'évenement a bien été modifié";
         }
 
         

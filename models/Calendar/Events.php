@@ -98,12 +98,13 @@ class Events {
      * @return bool
      */
     public function update (Event $event): bool {
-        $statement = $this->pdo->prepare('UPDATE evenements SET nom = ?, description = ?, date_debut = ?, date_fin = ? WHERE id_evenement = ?');
+        $statement = $this->pdo->prepare('UPDATE evenements SET nom = ?, description = ?, date_debut = ?, date_fin = ?, id_groupe = ? WHERE id_evenement = ?');
         return $statement->execute([
             $event->getName(),
             $event->getDescription(),
             $event->getStart()->format('Y-m-d H:i:s'),
             $event->getEnd()->format('Y-m-d H:i:s'),
+            $event->getIdGroup(),
             $event->getId()
         ]);
     }
