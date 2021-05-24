@@ -185,6 +185,7 @@ function getPageCalendarEvent() {
             if (empty($errors)) {
                 $events->hydrate($event, $data, $idGrp['id_groupe']);
                 $events->update($event);
+                $events->hydrate($event, $data, $idGrp['id_groupe']);
                 header('Location:'.URL. 'calendar&success=1');
                 exit();
             }
