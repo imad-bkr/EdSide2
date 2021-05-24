@@ -33,7 +33,7 @@
                 <div class="my-post">
                     <h3><?= $annonce['titre'] ?></h3>
                     <p>Le <?php $date = date_create($annonce['date']);
-                            echo date_format($date, "Y/m/d"); ?></p>
+                            echo date_format($date, "d/m/Y"); ?></p>
                     <p><?= $annonce['description'] ?></p>
                     <span class="post-tag"><?= $annonce['tag'] ?></span>
                     <a class="post-edit" href="<?= URL ?>tutoring/edit-post&id=<?= $annonce['id_annonce'] ?>"><?php echo file_get_contents("public/icons/edit.svg"); ?></a>
