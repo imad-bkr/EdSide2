@@ -8,15 +8,15 @@
             <input class="fillot-checkbox" type="checkbox" name="fillot">
         </div>
         <div class="search-tags">
-            Recherche par mot-clé:
-            <form action="#" method="POST">
-                <input type="search" name="bytags" id="">
-                <input type="submit" name="search" value="rechercher">
+            <form class="browse-search" action="#" method="POST">
+                <label class="browse-search-label">Recherche par mot-clé:</label>
+                <input class="browse-search-bar" type="search" name="bytags">
+                <input class="button" type="submit" name="search" value="rechercher">
             </form>
         </div>
     </aside>
     <section class="posts">
-        <?php foreach($annonces as $annonce) : ?>
+        <?php foreach ($annonces as $annonce) : ?>
             <a class="post" href="<?= URL ?>tutoring/view-post&id=<?= $annonce['id_annonce'] ?>">
                 <div class="preview-profil">
                     <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">

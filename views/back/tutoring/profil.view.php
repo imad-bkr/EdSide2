@@ -46,7 +46,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <a class="post-add" href="<?= URL ?>tutoring/new-post">Ajouter une annonce</a>
+        <a class="post-add button" href="<?= URL ?>tutoring/new-post">Ajouter une annonce</a>
     </section>
 </main>
 <script src="<?= URL ?>public/js/tutoring/profil.js"></script>
