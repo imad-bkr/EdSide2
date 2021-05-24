@@ -2,13 +2,13 @@
 <main class="calendar-main">
     <div class="calendar-box">
         <?php if ($created != "") : ?>
-            <span><?= $created ?></span>
+            <span class="alert calendar-alert alert-success"><?= $created ?></span>
         <?php endif; ?>
         <?php if ($modified != "") : ?>
-            <span><?= $modified ?></span>
+            <span class="alert calendar-alert alert-success"><?= $modified ?></span>
         <?php endif; ?>
         <?php if ($deleted != "") : ?>
-            <span><?= $deleted ?></span>
+            <span class="alert calendar-alert alert-danger"><?= $deleted ?></span>
         <?php endif; ?>
         <div class="calendar-header">
             <a class="calendar-nav" href="<?= URL ?>calendar&month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>">&lt;</a>
