@@ -1,5 +1,8 @@
 <?php ob_start(); ?>
 <main class="calendar-main">
+    <?php if ($msg != "") {
+        echo $msg;
+    } ?>
     <div class="calendar-box">
         <div class="calendar-header">
             <a class="calendar-nav" href="<?= URL ?>calendar&month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>">&lt;</a>

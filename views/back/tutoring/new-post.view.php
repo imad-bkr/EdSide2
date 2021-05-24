@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <main class="new-post-main">
     <a class="new-post-cancel" href="<?= URL ?>tutoring/profil">Annuler</a>
-    <form action="#" method="POST">
+    <form action="" method="POST">
         <div class="new-post-title">
             Titre :
             <input class="new-post-title" type="text" name="title">

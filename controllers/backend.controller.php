@@ -119,6 +119,11 @@ function getPageCalendar() {
         $end = (clone $start)->modify('+' . (6 + 7 * ($weeks -1)) . ' days');
         
         $events =  $events->getEventsBetweenByDay($start, $end);
+
+        $msg = "";
+        if (isset($_GET['success']) && !empty($_GET['success'])){
+            $msg = "L'évenement a bien été modifié";
+        }
     
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";
@@ -162,7 +167,8 @@ function getPageCalendarEvent() {
             'date'        => $event->getStart()->format('Y-m-d'),
             'start'       => $event->getStart()->format('H:i'),
             'end'         => $event->getEnd()->format('H:i'),
-            'description' => $event->getDescription()
+            'description' => $event->getDescription(),
+            'id_groupe' => $event->getIdGroup()
         ];
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -177,11 +183,6 @@ function getPageCalendarEvent() {
                 header('Location:'.URL. 'calendar&success=1');
                 exit();
             }
-        }
-
-        $msg = "";
-        if (isset($_GET['success']) && !empty($_GET['success'])){
-            $msg = "L'évenement a bien été modifié";
         }
 
         
