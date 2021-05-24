@@ -57,6 +57,9 @@
             <button class="calendar-add-group button">Créer groupe</button>
             <button class="calendar-join-group-button button">Rejoindre groupe</button>
         </div>
+        <?php if ($not_found != "") : ?>
+            <span class="alert alert-danger"><?= $not_found ?></span>
+        <?php endif; ?>
     </div>
 </main>
 <form class="calendar-new-group hidden" action="" method="post">

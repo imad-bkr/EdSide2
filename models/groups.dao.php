@@ -55,3 +55,30 @@ function getIdGroupeFromDB($groupe){
     $stmt->closeCursor();
     return $idGroupe;
 }
+
+function getGroupesUserFromDB($idUser) {
+    $bdd = connexionPDO();
+    $req = "SELECT g.nom, g.id_groupe FROM groupe g
+    INNER JOIN appartenir a ON g.id_groupe = a.id_groupe  
+    WHERE id_user = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $groupes = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $groupes;
+}
+
+function findGroupByCodeDB($code_groupe) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM groupe 
+    WHERE code = :code";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":code", $code_groupe, PDO::PARAM_STR);
+    if ($stmt->execute()) {
+        $groupe = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $groupe;
+    } else {
+        return false;
+    }
+}

@@ -111,6 +111,9 @@ function getPageCalendar() {
         require 'models/Calendar/Month.php';
         require 'models/Calendar/Events.php';
         require_once "models/groups.dao.php";
+        
+        $user = getIdUser($_SESSION['user']);
+        $idUser = $user['id_user'];
 
         if(isset($_POST['creer_groupe']) && !empty($_POST['creer_groupe'])) {
             if (isset($_POST['nom_groupe']) && !empty($_POST['nom_groupe'])){
@@ -118,13 +121,23 @@ function getPageCalendar() {
                 $code_groupe = uniqid();
                 InsertGroupIntoBD($nom_groupe, $code_groupe);
                 $idGroupe = getIdGroupeFromDB($nom_groupe);
-                $user = getIdUser($_SESSION['user']);
-                $idUser = $user['id_user'];
                 SetAppartenirIntoBD($idGroupe['id_groupe'], $idUser);
             }
         }
 
-        $groupes = getGroupesFromDB();
+        $not_found = "";
+        if(isset($_POST['rejoindre_groupe']) && !empty($_POST['rejoindre_groupe'])) {
+            if (isset($_POST['code_groupe']) && !empty($_POST['code_groupe'])){
+                $code_groupe = Securite::secureHTML($_POST['code_groupe']);
+                if ($groupe = findGroupByCodeDB($code_groupe)){
+                    echo $groupe['code'];
+                } else {
+                    $not_found = "Ce groupe n'existe pas";
+                }
+            }
+        }
+
+        $groupes = getGroupesUserFromDB($idUser);
         
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
@@ -174,6 +187,9 @@ function getPageCalendarEvent() {
         require 'models/Calendar/Events.php';
         require 'models/Calendar/EventValidator.php'; 
 
+        $user = getIdUser($_SESSION['user']);
+        $idUser = $user['id_user'];
+
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
 
@@ -188,7 +204,7 @@ function getPageCalendarEvent() {
             header('Location:'. URL . 'calendar');
         }
 
-        $groupes = getGroupesFromDB();
+        $groupes = getGroupesUserFromDB($idUser);
 
         $data = [
             'name'        => $event->getName(),
@@ -243,7 +259,10 @@ function getPageCalendarNewEvent() {
         require 'models/Calendar/Event.php';
         require 'models/Calendar/EventValidator.php'; 
 
-        $groupes = getGroupesFromDB();
+        $user = getIdUser($_SESSION['user']);
+        $idUser = $user['id_user'];
+
+        $groupes = getGroupesUserFromDB($idUser);
 
         $data = [
             'date'  => $_GET['date'] ?? date('Y-m-d'),
