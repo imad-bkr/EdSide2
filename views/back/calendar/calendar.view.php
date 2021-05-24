@@ -60,13 +60,13 @@
     </div>
 </main>
 <form class="calendar-new-group hidden" action="" method="post">
-    <input class="calendar-new-group-name" type="text" placeholder="Nom du groupe">
-    <input class="calendar-new-group-confirm button" type="submit" value="Créer">
+    <input class="calendar-new-group-name" type="text" name="nom_groupe" placeholder="Nom du groupe">
+    <input class="calendar-new-group-confirm button" type="submit" name="creer_groupe" value="Créer">
     <input class="calendar-new-group-cancel button" type="button" value="Annuler">
 </form>
 <form class="calendar-join-group hidden" action="" method="post">
-    <input class="calendar-join-group-name" type="text" placeholder="Code du groupe">
-    <input class="calendar-join-group-confirm button" type="submit" value="Rejoindre">
+    <input class="calendar-join-group-name" type="text" name="code_groupe" placeholder="Code du groupe">
+    <input class="calendar-join-group-confirm button" type="submit" name="rejoindre_groupe" value="Rejoindre">
     <input class="calendar-join-group-cancel button" type="button" value="Annuler">
 </form>
 <script src="<?= URL ?>public/js/calendar.js"></script>

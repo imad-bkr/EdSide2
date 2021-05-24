@@ -112,6 +112,18 @@ function getPageCalendar() {
         require 'models/Calendar/Events.php';
         require_once "models/groups.dao.php";
 
+        if(isset($_POST['creer_groupe']) && !empty($_POST['creer_groupe'])) {
+            if (isset($_POST['nom_groupe']) && !empty($_POST['nom_groupe'])){
+                $nom_groupe = Securite::secureHTML($_POST['nom_groupe']);
+                $code_groupe = uniqid();
+                InsertGroupIntoBD($nom_groupe, $code_groupe);
+                $idGroupe = getIdGroupeFromDB($nom_groupe);
+                $user = getIdUser($_SESSION['user']);
+                $idUser = $user['id_user'];
+                SetAppartenirIntoBD($idGroupe['id_groupe'], $idUser);
+            }
+        }
+
         $groupes = getGroupesFromDB();
         
         $bdd = connexionPDO();
