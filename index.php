@@ -22,6 +22,10 @@ try {
             break;
             case "calendar": getPageCalendar();
             break;
+            case "calendar/event": getPageCalendarEvent();
+            break;
+            case "calendar/new-event": getPageCalendarNewEvent();
+            break;
             case "tutoring/browse": getPageTutoringBrowse();
             break;
             case "tutoring/view-post": getPageTutoringViewPost();

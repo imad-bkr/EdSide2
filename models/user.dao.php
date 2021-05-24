@@ -48,3 +48,18 @@ function getIdUser($username) {
     $stmt->closeCursor();
     return $user;
 }
+
+function UdpateUser($email, $password, $promo, $groupe, $idUser) {
+    $bdd = connexionPDO();
+    $req = "UPDATE utilisateurs
+    SET email = :email, password = :password, promo = :promo, groupe = :groupe
+    WHERE id_user = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+    $stmt->bindValue(":password", $password, PDO::PARAM_STR);
+    $stmt->bindValue(":promo", $promo, PDO::PARAM_STR);
+    $stmt->bindValue(":groupe", $groupe, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}
