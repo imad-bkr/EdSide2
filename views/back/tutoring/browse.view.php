@@ -20,6 +20,8 @@
             <a class="post" href="<?= URL ?>tutoring/view-post&id=<?= $annonce['id_annonce'] ?>">
                 <div class="preview-profil">
                     <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
+                    <h3 class="preview-profil-name">John Doe</h3>
+                    <p class="preview-profil-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                 </div>
                 <div class="post-body">
                     <h3 class="post-title"><?= $annonce['titre'] ?></h3>

@@ -11,6 +11,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 ul {
@@ -27,14 +28,9 @@ a {
     color: inherit;
 }
 
-a:hover {
-    color: #ff9800;
-}
-
 /* header */
 
 .header {
-    font-family: Arial, Helvetica, sans-serif;
     background: rgb(7, 7, 61);
     color: #fff;
     display: flex;
@@ -75,7 +71,6 @@ a:hover {
     width: 100%;
     display: flex;
     text-transform: uppercase;
-    font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     z-index: 4;
 }
@@ -137,7 +132,6 @@ a:hover {
 
 .calendar-main {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .calendar-box {
@@ -221,17 +215,12 @@ a:hover {
 
 /* tutoring */
 
-main a:hover {
-    color: #ff9800;
-}
-
 /* tutoring browse */
 
 .browse-main {
     display: flex;
     position: relative;
     flex: 1 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .browse-link-profil {
@@ -247,6 +236,10 @@ main a:hover {
     letter-spacing: 0.15px;
 }
 
+.browse-link-profil:hover {
+    color: #ff9800;
+}
+
 .posts {
     padding-top: 50px;
     flex: 1 1;
@@ -257,11 +250,44 @@ main a:hover {
 }
 
 .post {
+    display: flex;
     width: 95%;
     height: 300px;
     margin: 15px;
     border-radius: 20px;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.post:hover {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.preview-profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0;
+    padding: 20px;
+}
+
+.preview-profil-pic {
+    border-radius: 50%;
+}
+
+.preview-profil-name {
+    font-size: 1.5rem;
+}
+
+.preview-profil-desc {
+    width: 100%;
+    height: 6rem;
+    padding: 10px;
+}
+
+.post-body {
+    flex: 3 0;
+    padding: 20px;
 }
 
 .sidebar {
@@ -276,7 +302,7 @@ main a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 20px;
+    padding: 10px;
     background-color: rgb(7, 7, 61);
     color: #fff;
     border-bottom-right-radius: 20px;
@@ -294,22 +320,180 @@ main a:hover {
     position: relative;
 }
 
+.profil-info {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: space-between;
+    margin: 50px 10px 20px;
+    padding: 10px;
+    width: 600px;
+    height: 500px;
+    flex: 1 0;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.profil-name {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.profil-pic-box {
+    position: relative;
+    padding: 10px;
+    flex: 1 1;
+}
+
+.profil-pic {
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.profil-pic-upload {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profil-pic-box:hover .profil-pic-upload {
+    display: block;
+}
+
+.contact-info-box {
+    position: relative;
+    flex: 2 0;
+}
+
+.contact-info {
+    resize: none;
+    width: 100%;
+    min-width: 100px; /*? tmp?  */
+    height: 100%;
+    border: none;
+    border-left: 3px solid #000;
+    background-color: #eee;
+    padding: 20% 10px;
+    outline: none;
+}
+
+.contact-info:read-only {
+    background-color: #fff;
+}
+
+.user-info-box {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.user-info {
+    resize: none;
+    width: 100%;
+    height: 6rem;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none;
+    background-color: #eee;
+}
+
+.user-info:read-only {
+    background-color: #fff;
+}
+
+.contact-info-edit,
+.user-info-edit {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    fill: #000;
+}
+
+.contact-info-box:hover .contact-info-edit,
+.user-info-box:hover .user-info-edit {
+    display: block;
+}
+
+.contact-info-box:hover .contact-info-edit:hover,
+.user-info-box:hover .user-info-edit:hover {
+    fill: #ff9800;
+}
+
+.contact-info-cancel,
+.user-info-cancel {
+    position: absolute;
+    bottom: 5px;
+    left: 30%;
+    cursor: pointer;
+    fill: #000;
+}
+
+.contact-info-cancel:hover,
+.user-info-cancel:hover {
+    fill: #f00;
+}
+
+.contact-info-validate,
+.user-info-validate {
+    position: absolute;
+    bottom: 5px;
+    right: 30%;
+    cursor: pointer;
+    fill: #000;
+}
+
+.contact-info-validate:hover,
+.user-info-validate:hover {
+    fill: #0e0;
+}
+
+.my-posts-box {
+    position: relative;
+    height: 500px;
+    margin: 50px 10px 0;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    flex: 2 0;
+}
+
+.my-posts-box h2 {
+    text-align: center;
+}
+
+.my-posts {
+    height: 380px;
+    overflow-y: auto;
+}
+
+.my-post {
+    position: relative;
+    background-color: rgb(35, 35, 95);
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
 .post-edit {
     display: none;
     position: absolute;
-    top: 0;
-    fill: #000;
-    color: #fff;
-    padding: 10px;
+    top: 50%;
+    transform: translate(-70%, -50%) scale(2);
+    fill: #fff;
 }
 
 .my-post:hover .post-edit {
     display: block;
-}
-
-.profil-edit {
-    border-bottom-right-radius: 20px;
-    left: 0;
 }
 
 .my-post:hover .post-edit {
@@ -321,65 +505,35 @@ main a:hover {
     fill: #ff9800;
 }
 
-.profil-info {
-    position: relative;
-    margin: 70px 10px 0 20px;
-    width: 600px;
-    height: auto;
-    flex: 1 1;
+.post-tag {
+    background-color: #ff9800;
+    color: #000;
+    padding: 0.1rem 1rem;
     border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.profil {
-    display: flex;
-}
-
-.profil-pic {
-    border-radius: 80%;
-    border: 1px solid black;
-    margin-right: 20px;
-}
-
-.contact-info {
-    resize: none;
-    background-color: #e8e8e8;
-    border: 2px solid #ff9800;
+.post-add {
+    position: absolute;
+    text-transform: uppercase;
+    color: #000;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #ff9800;
+    border: none;
     border-radius: 10px;
+    padding: 0.6rem;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.contact-info:read-only {
-    background-color: #fff;
-    border-color: #000;
-}
-
-.user-info {
-    margin-top: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-.my-posts {
-    height: auto;
-    margin: 70px 15px 0 15px;
-    border-radius: 20px;
+.post-add:hover {
+    background-color: #ffc947;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    flex: 2 2;
-}
-
-.my-posts h2 {
-    text-align: center;
-}
-
-.my-post {
-    position: relative;
-    border: 1px solid rgb(35, 35, 95);
-    margin: 10px;
 }
 
 /* useful */
 
 .hidden {
-    display: none;
+    display: none !important;
 }
