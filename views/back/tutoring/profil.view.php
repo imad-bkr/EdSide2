@@ -8,9 +8,7 @@
             <input class="profil-pic-upload" type="file">
         </div>
         <form class="contact-info-box" action="" method="POST">
-            <textarea class="contact-info" readonly="readonly">
-                Téléphone: +33XXXXX
-                Adresse e-mail: example@yahoo.fr
+            <textarea class="contact-info" readonly="readonly"><?= "Téléphone: +33XXXXX\nAdresse e-mail: example@yahoo.fr" ?>
             </textarea>
             <div class="contact-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
             <div class="contact-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
@@ -19,15 +17,12 @@
                 <?php echo file_get_contents("public/icons/check.svg"); ?>
             </label>
         </form>
-        <form class="user-info-box">
-            <textarea class="user-info" readonly="readonly">
-                Classe
-                Description
-            </textarea>
+        <form class="user-info-box" action="" method="POST">
+            <textarea placeholder="Description" name="desc" class="user-info" readonly="readonly"><?php if($user['description_profil'] !== "") { echo $user['description_profil']; } else {echo ""; }?></textarea>
             <div class="user-info-edit"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
             <div class="user-info-cancel hidden"><?php echo file_get_contents("public/icons/cross.svg"); ?></div>
             <label class="user-info-validate hidden">
-                <input class="hidden" type="submit">
+                <input class="hidden" type="submit" name="submit-desc">
                 <?php echo file_get_contents("public/icons/check.svg"); ?>
             </label>
         </form>

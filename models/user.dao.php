@@ -63,3 +63,15 @@ function UdpateUser($email, $password, $promo, $groupe, $idUser) {
     $stmt->execute();
     $stmt->closeCursor();
 }
+
+function insertDescToUserInDB($description, $idUser) {
+    $bdd = connexionPDO();
+    $req = "UPDATE utilisateurs
+    SET description_profil = :desc
+    WHERE id_user = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":desc", $description, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}
