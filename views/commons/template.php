@@ -19,7 +19,7 @@
             <a href=""><li>English</li></a>
             <form method="POST" action="">
                 <input type="hidden" name="deconnexion" value="true" />
-                <input type="submit" value="Déconnexion" />
+                <input class="log-out" type="submit" value="Déconnexion" />
             </form>
         </ul>
     </header>

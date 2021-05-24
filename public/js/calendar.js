@@ -1,5 +1,5 @@
 (function () {
-    var newGroupButton = document.querySelector(".calendar-add-group");
+    var newGroupButton = document.querySelector(".calendar-new-group-button");
     var newGroupBox = document.querySelector(".calendar-new-group");
     var newGroupCancel = document.querySelector(".calendar-new-group-cancel");
     var newGroupConfirm = document.querySelector(".calendar-new-group-confirm");

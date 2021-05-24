@@ -54,7 +54,7 @@
         </div>
         <div class="calendar-button-box">
             <a class="calendar-add-event button" href="<?= URL ?>calendar/new-event">Ajouter évènement</a>
-            <button class="calendar-add-group button">Créer groupe</button>
+            <button class="calendar-new-group-button button">Créer groupe</button>
             <button class="calendar-join-group-button button">Rejoindre groupe</button>
         </div>
     </div>
