@@ -41,7 +41,7 @@
         <label for="groupe">Groupe associé</label>
         <select name="groupe" id="groupe">
             <?php foreach($groupes as $groupe) : ?>
-                <option value="<?= $groupe['nom'] ?>" <?php if($data['id_groupe'] === $event->getIdGroup()) echo "selected"?>><?= $groupe['nom'] ?></option>
+                <option value="<?= $groupe['nom'] ?>" <?php echo "selected"; ?>><?= $groupe['nom'] ?></option>
             <?php endforeach; ?>
         </select>
         </div>

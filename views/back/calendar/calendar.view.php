@@ -1,9 +1,12 @@
 <?php ob_start(); ?>
 <main class="calendar-main">
-    <?php if ($msg != "") {
-        echo $msg;
-    } ?>
     <div class="calendar-box">
+        <?php if ($created != "") : ?>
+            <span><?= $created ?></span>
+        <?php endif; ?>
+        <?php if ($modified != "") : ?>
+            <span><?= $modified ?></span>
+        <?php endif; ?>
         <div class="calendar-header">
             <a class="calendar-nav" href="<?= URL ?>calendar&month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>">&lt;</a>
             <h1 class="calendar-title"><?= $month->toString(); ?></h1>

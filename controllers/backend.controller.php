@@ -120,9 +120,14 @@ function getPageCalendar() {
         
         $events =  $events->getEventsBetweenByDay($start, $end);
 
-        $msg = "";
+        $modified = "";
         if (isset($_GET['success']) && !empty($_GET['success'])){
-            $msg = "L'évenement a bien été modifié";
+            $modified = "L'évenement a bien été modifié";
+        }
+
+        $created = "";
+        if (isset($_GET['created']) && !empty($_GET['created'])){
+            $created = "L'évenement a bien été crée et ajouté au calendrier";
         }
     
         $title = "EdSide - Calendrier";
@@ -232,7 +237,7 @@ function getPageCalendarNewEvent() {
                 $events = new \Calendar\Events($bdd);
                 $event = $events->hydrate(new \Calendar\Event(), $data, $idGrp['id_groupe']);
                 $events->create($event);
-                header('Location:'.URL. 'calendar');
+                header('Location:'.URL. 'calendar&created=1');
                 exit();
             }
         }  
