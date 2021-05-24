@@ -11,7 +11,7 @@
 
     newGroupToggle = function () {
         document.querySelector(".calendar-main").classList.toggle("greyout");
-        joinGroupBox.classList.toggle("hidden");
+        newGroupBox.classList.toggle("hidden");
     };
 
     joinGroupToggle = function () {
