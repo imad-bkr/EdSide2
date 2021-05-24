@@ -50,12 +50,25 @@
                 <input class="checkbox" id="groupe" type="checkbox" checked>
                 <label for="groupe"><?= $groupe['nom'] ?></label>
             </div>
-        <?php endforeach; ?>
-            </div>
-        <a class="calendar-add-event" href="<?= URL ?>calendar/new-event">Ajouter évènement</a>
-        <a class="calendar-add-group" href="">Créer groupe</a>
+        </div>
+        <div class="calendar-button-box">
+            <a class="calendar-add-event button" href="<?= URL ?>calendar/edit-event">Ajouter évènement</a>
+            <button class="calendar-add-group button">Créer groupe</button>
+            <button class="calendar-join-group-button button">Créer groupe</button>
+        </div>
     </div>
 </main>
+<form class="calendar-new-group hidden" action="" method="post">
+    <input class="calendar-new-group-name" type="text" placeholder="Nom du groupe">
+    <input class="calendar-new-group-confirm button" type="submit" value="Créer groupe">
+    <input class="calendar-new-group-cancel button" type="button" value="Annuler">
+</form>
+<form class="calendar-join-group hidden" action="" method="post">
+    <input class="calendar-join-group-name" type="text" placeholder="Code du groupe">
+    <input class="calendar-join-group-confirm button" type="submit" value="Créer groupe">
+    <input class="calendar-join-group-cancel button" type="button" value="Annuler">
+</form>
+<script src="<?= URL ?>public/js/calendar.js"></script>
 <?php
 $content = ob_get_clean();
 require "views/commons/template.php"
