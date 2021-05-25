@@ -20,7 +20,7 @@
                 <li>Paramètres</li>
             </a>
             <a href="">
-                <li>English</li>
+                <li>English <?php echo file_get_contents("public/icons/EN-flag.svg"); ?></li>
             </a>
             <form method="POST" action="">
                 <input type="hidden" name="deconnexion" value="true" />

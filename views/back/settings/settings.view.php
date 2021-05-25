@@ -3,15 +3,15 @@
     <a class="link-top-left" href="<?= URL ?>calendar">Annuler</a>
     <form class="form" action="#" method="POST">
         <div class="form-field">
-            <input class="form-input" name="email" type="email" id="email" placeholder="">
+            <input class="form-input" name="email" type="email" id="email" placeholder=" ">
             <label class="form-label" for="email">Email :</label>
         </div>
         <div class="form-field">
-            <input class="form-input" class="setting-form-input" type="password" id="pw" name="password" placeholder="">
+            <input class="form-input" class="setting-form-input" type="password" id="pw" name="password" placeholder=" ">
             <label class="form-label" for="pw">Nouveau mot de passe :</label>
         </div>
         <div class="form-field">
-            <input class="form-input" class="setting-form-input" type="password" id="confirm-pw" name="c_password" placeholder="">
+            <input class="form-input" class="setting-form-input" type="password" id="confirm-pw" name="c_password" placeholder=" ">
             <label class="form-label" for="confirm-pw">Confirmer votre mot de passe :</label>
         </div>
         <div class="form-field-select">

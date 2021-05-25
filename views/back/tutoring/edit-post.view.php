@@ -4,15 +4,15 @@
     <form class="form" action="#" method="POST">
         <h1 class="form-title">Modifier l'annonce</h1>
         <div class="form-field">
-            <input class="form-input" type="text" name="title" placeholder="" value="<?= $annonce['titre'] ?>">
+            <input class="form-input" type="text" name="title" placeholder=" " value="<?= $annonce['titre'] ?>">
             <label class="form-label">Titre</label>
         </div>
         <div class="form-field-textarea">
-            <textarea class="form-input" name="desc" placeholder=""><?= $annonce['description'] ?></textarea>
+            <textarea class="form-input" name="desc" placeholder=" "><?= $annonce['description'] ?></textarea>
             <label class="form-label">Description</label>
         </div>
         <div class="form-field">
-            <input class="form-input" type="text" name="tags" placeholder="" value="<?= $annonce['tag'] ?>">
+            <input class="form-input" type="text" name="tags" placeholder=" " value="<?= $annonce['tag'] ?>">
             <label class="form-label">Tags</label>
         </div>
         <div class="form-buttons">

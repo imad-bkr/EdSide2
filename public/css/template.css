@@ -70,6 +70,15 @@ a {
     line-height: 2rem;
 }
 
+.user-menu > :hover {
+    color: #ff9800;
+}
+
+.user-menu svg {
+    width: 1.2rem;
+    transform: translate(0.2rem,0.2rem);
+}
+
 .log-out {
     background: none;
     border: none;
@@ -241,6 +250,19 @@ a {
 
 .calendar-othermonth .calendar-day {
     opacity: 0.3;
+}
+
+.calendar-event {
+    margin: 5px 0;
+    padding: 2px 10px;
+    background-color: rgb(35, 35, 95);
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.calendar-event:hover {
+    color: #ff9800;
 }
 
 .calendar-groups-box {
@@ -889,4 +911,25 @@ textarea.form-input {
 .form-buttons .button {
     flex: 1 0;
     margin: 0 1rem;
+}
+
+.coming-soon {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 70%;
+  height: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(35, 35, 95);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  text-transform: UPPERCASE;
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 }
