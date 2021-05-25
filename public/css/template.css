@@ -154,6 +154,12 @@ a {
     text-decoration: underline;
 }
 
+/* settings */
+
+.settings-main {
+    height: 563px;
+}
+
 /* calendar */
 
 .calendar-main {
@@ -196,6 +202,7 @@ a {
     height: calc(100vh - 281px);
     margin: 10px 0 0;
     border-collapse: collapse;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 .calendar-table th {
@@ -212,6 +219,10 @@ a {
     width: 14.29%;
     height: calc(20%-1rem);
     font-size: 0.75rem;
+}
+
+.calendar-table td:hover {
+    background-color: #eee;
 }
 
 .calendar-table--6weeks td {
@@ -254,6 +265,7 @@ a {
     border-radius: 10px;
     color: #fff;
     text-align: left;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .calendar-group-name {
@@ -265,7 +277,7 @@ a {
     color: #ccc;
 }
 
-.calendar-group-code span{
+.calendar-group-code span {
     color: #fff;
 }
 
@@ -373,10 +385,23 @@ a {
     width: 200px;
 }
 
-/* calendar new event */
+/* calendar new/edit event */
 
 .new-event-main {
-    height: 782px;
+    height: 783.2px;
+}
+
+.event-main {
+    height: 833.2px;
+    padding-top: 50px;
+}
+
+.remove-event {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
 }
 
 /* tutoring */
@@ -687,7 +712,7 @@ a {
 
 .new-post-main,
 .edit-post-main {
-    height: 100%;
+    height: 564px;
 }
 
 /* useful */
