@@ -165,6 +165,18 @@ function getPageCalendar() {
         if (isset($_GET['delete']) && !empty($_GET['delete'])){
             $deleted = "L'évenement a été supprimé";
         }
+
+        $leaved = "";
+        if (isset($_GET['leave']) && !empty($_GET['leave'])){
+            $leaved = "Vous avez quitté le groupe";
+        }
+
+        if(isset($_POST['leave'])) {
+            $idGrp = Securite::secureHTML($_POST['leave']);
+            echo $idUser;
+            deleteFromAppartenirDB($idUser, $idGrp);
+            //header("Location:" .URL. "calendar&leave=1");
+        }
     
         $title = "EdSide - Calendrier";
         $desc = "Organisez vos journée grâce au calendrier et au système de groupe de EdSide";

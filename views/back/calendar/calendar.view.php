@@ -10,6 +10,9 @@
         <?php if ($deleted != "") : ?>
             <span class="alert calendar-alert alert-danger"><?= $deleted ?></span>
         <?php endif; ?>
+        <?php if ($leaved != "") : ?>
+            <span class="alert calendar-alert alert-danger"><?= $leaved ?></span>
+        <?php endif; ?>
         <div class="calendar-header">
             <a class="calendar-nav" href="<?= URL ?>calendar&month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>">&lt;</a>
             <h1 class="calendar-title"><?= $month->toString(); ?></h1>
@@ -52,7 +55,7 @@
                     <p class="calendar-group-code"><span>Code : </span><?= $groupe['code'] ?></p>
                     <div class="calendar-group-edit" title="modifier groupe"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
                     <form action="" method="POST">
-                        <button class="calendar-group-leave" type="submit" title="quitter groupe"><?php echo file_get_contents("public/icons/arrow-right.svg"); ?></button>
+                        <button value="<?= $groupe['id_groupe']?>" name="leave" class="calendar-group-leave" type="submit" title="quitter le groupe"><?php echo file_get_contents("public/icons/arrow-right.svg"); ?></button>
                     </form>
                 </div>
             <?php endforeach; ?>

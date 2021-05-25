@@ -82,3 +82,14 @@ function findGroupByCodeDB($code_groupe) {
         return false;
     }
 }
+
+function deleteFromAppartenirDB($idUser, $idGroup) {
+    $bdd = connexionPDO();
+    $req = "DELETE FROM appartenir
+    WHERE id_user = :id_user AND id_groupe = :id_groupe";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":id_user", $idUser, PDO::PARAM_INT);
+    $stmt->bindValue(":id_groupe", $idGroup, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}
