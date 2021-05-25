@@ -32,7 +32,7 @@
                     ?>
                         <td class="<?= $month->withinMonth($date) ? '' : 'calendar-othermonth'; ?>">
                             <div class="calendar-day"><?= $date->format('d'); ?></div>
-                            <?php foreach($eventsForDay as $event): ?>
+                            <?php foreach ($eventsForDay as $event) : ?>
                                 <div id="events" class="calendar-event">
                                     <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
                                 </div>
@@ -44,15 +44,18 @@
         </table>
     </div>
     <div class="calendar-groups-box">
+        <h1>Groupes</h1>
         <div class="calendar-groups-list">
-        <?php foreach($groupes as $groupe) : ?>
-            <div class="calendar-group">
-                <?= $groupe['nom'] ?>
-            </div>
-            <div class="calendar-codegroup">
-                <?= $groupe['code'] ?>
-            </div>
-        <?php endforeach; ?>
+            <?php foreach ($groupes as $groupe) : ?>
+                <div class="calendar-group">
+                    <p class="calendar-group-name"><span>Nom : </span><?= $groupe['nom'] ?></p>
+                    <p class="calendar-group-code"><span>Code : </span><?= $groupe['code'] ?></p>
+                    <div class="calendar-group-edit" title="modifier groupe"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
+                    <form action="" method="POST">
+                        <button class="calendar-group-leave" type="submit" title="quitter groupe"><?php echo file_get_contents("public/icons/arrow-right.svg"); ?></button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </div>
         <div class="calendar-button-box">
             <button class="calendar-new-group-button button">Créer un groupe</button>
