@@ -1,31 +1,31 @@
 <?php ob_start(); ?>
 <main class="event-main">
-    <a class="event-cancel" href="<?= URL ?>calendar">Annuler</a>
-    <?php if (!empty($errors)): ?>
-      <div class="invalid-inputs">
-        Merci de corriger vos erreurs
-      </div>
+    <a class="link-top-left" href="<?= URL ?>calendar">Annuler</a>
+    <?php if (!empty($errors)) : ?>
+        <div class="invalid-inputs">
+            Merci de corriger vos erreurs
+        </div>
     <?php endif; ?>
-    <h1>Modifier l'évènement <?= Securite::secureHTML(($event->getName())); ?></h1>
-    <form action="" method="POST">
+    <form class="form" action="" method="POST">
+        <h1>Modifier l'évènement <?= Securite::secureHTML(($event->getName())); ?></h1>
         <div>
             <label for="name">Nom</label>
             <input id="name" type="text" required class="event-name" name="name" value="<?= isset($data['name']) ? Securite::secureHTML($data['name']) : ''; ?>">
-            <?php if (isset($errors['name'])): ?>
+            <?php if (isset($errors['name'])) : ?>
                 <small><?= $errors['name']; ?></small>
             <?php endif; ?>
         </div>
         <div>
             <label for="date">Date</label>
             <input id="date" type="date" required name="date" value="<?= isset($data['date']) ? Securite::secureHTML($data['date']) : ''; ?>">
-            <?php if (isset($errors['date'])): ?>
+            <?php if (isset($errors['date'])) : ?>
                 <small><?= $errors['date']; ?></small>
             <?php endif; ?>
         </div>
         <div>
             <label for="start">Démarrage</label>
             <input id="start" type="time" required name="start" placeholder="HH:MM" value="<?= isset($data['start']) ? Securite::secureHTML($data['start']) : ''; ?>">
-            <?php if (isset($errors['start'])): ?>
+            <?php if (isset($errors['start'])) : ?>
                 <small><?= $errors['start']; ?></small>
             <?php endif; ?>
         </div>
@@ -38,12 +38,14 @@
             <textarea name="description" id="description"><?= isset($data['description']) ? Securite::secureHTML(($data['description'])) : ''; ?></textarea>
         </div>
         <div>
-        <label for="groupe">Groupe associé</label>
-        <select name="groupe" id="groupe">
-            <?php foreach($groupes as $groupe) : ?>
-                <option value="<?= $groupe['nom']?>" <?php if ($groupe['id_groupe'] == $event->getIdGroup()) {echo "selected";}?>><?= $groupe['nom']?></option>
+            <label for="groupe">Groupe associé</label>
+            <select name="groupe" id="groupe">
+                <?php foreach ($groupes as $groupe) : ?>
+                    <option value="<?= $groupe['nom'] ?>" <?php if ($groupe['id_groupe'] == $event->getIdGroup()) {
+                                                                echo "selected";
+                                                            } ?>><?= $groupe['nom'] ?></option>
                 <?php endforeach; ?>
-        </select>
+            </select>
         </div>
         <div>
             <button>Modifier l'évènement</button>
@@ -57,8 +59,6 @@
     </form>
 </main>
 <?php
-    $content = ob_get_clean();
-    require "views/commons/template.php" 
+$content = ob_get_clean();
+require "views/commons/template.php"
 ?>
-
- 

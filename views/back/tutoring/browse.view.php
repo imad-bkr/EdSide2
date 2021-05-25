@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 <main class="browse-main">
+    <a class="link-top-right" href="<?= URL ?>tutoring/profil">Mon profil</a>
     <aside class="sidebar">
         <div class="parrain-fillot">
             Parrain:
@@ -32,7 +33,6 @@
             </a>
         <?php endforeach ?>
     </section>
-    <a class="browse-link-profil" href="<?= URL ?>tutoring/profil">Mon profil</a>
 </main>
 <?php
     $content = ob_get_clean();

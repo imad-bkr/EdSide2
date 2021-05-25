@@ -1,31 +1,32 @@
 <?php ob_start(); ?>
 <main class="edit-post-main">
-    <a class="edit-post-cancel" href="<?= URL ?>tutoring/profil">Retour au profil</a>
-    <form action="#" method="POST">
-        <div class="edit-post-title">
-            Titre :
-            <input class="edit-post-title" type="text" name="title" value="<?= $annonce['titre'] ?>">
+    <a class="link-top-left" href="<?= URL ?>tutoring/profil">Retour au profil</a>
+    <form class="form" action="#" method="POST">
+        <h1 class="form-title">Nouvel annonce</h1>
+        <div class="form-field">
+            <input class="form-input" type="text" name="title" placeholder="" value="<?= $annonce['titre'] ?>">
+            <label class="form-label">Titre</label>
         </div>
-        <div class="edit-post-content">
-            Description : 
-            <textarea class="edit-post-desc" name="desc" ><?= $annonce['description'] ?></textarea>
+        <div class="form-field-textarea">
+            <textarea class="form-input" name="desc" placeholder=""><?= $annonce['description'] ?></textarea>
+            <label class="form-label">Description</label>
         </div>
-        <div class="edit-post-tags">
-            Tags : <input type="text" name="tags" value="<?= $annonce['tag'] ?>">
+        <div class="form-field">
+            <input class="form-input" type="text" name="tags" placeholder="" value="<?= $annonce['tag'] ?>">
+            <label class="form-label">Tags</label>
         </div>
-        <input class="edit-post-confirm" type="submit" name="edit" value="Valider">
-        <input id="deleteBtn" class="edit-post-delete" type="submit" name="delete" value="Supprimer l'annonce">
+        <div class="form-buttons">
+            <input class="button" type="submit" name="edit" value="Valider">
+            <input id="deleteBtn" class="button" type="submit" name="delete" value="Supprimer l'annonce">
+        </div>
     </form>
-    <?php if($msg !== "L'annonce a bien modifiée") {?>
+    <?php if ($msg !== "L'annonce a bien modifiée") { ?>
         <div class="invalid-post"><?= $msg; ?></div>
     <?php } else { ?>
         <div class="valid-post"><?= $msg; ?></div>
     <?php } ?>
 </main>
 <?php
-    $content = ob_get_clean();
-    require "views/commons/template.php" 
+$content = ob_get_clean();
+require "views/commons/template.php"
 ?>
-
-
- 

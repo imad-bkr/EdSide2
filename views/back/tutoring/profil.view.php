@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <main class="profil-main">
-    <a class="back-to-posts" href="<?= URL ?>tutoring/browse">Retour aux annonces</a>
+    <a class="link-top-left" href="<?= URL ?>tutoring/browse">Retour aux annonces</a>
     <section class="profil-info">
         <h1 class="profil-name"><?php echo $_SESSION['user'];?></h1>
         <div class="profil-pic-box">

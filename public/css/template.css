@@ -14,6 +14,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+    position: relative;
+    flex: none;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -63,6 +68,15 @@ a {
     padding: 10px 20px;
     border-bottom-left-radius: 15px;
     line-height: 2rem;
+}
+
+.log-out {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+    cursor: pointer;
 }
 
 /* navbar */
@@ -126,6 +140,7 @@ a {
     margin-top: auto;
     padding: 30px;
     flex: none;
+    z-index: 3;
 }
 
 /* calendar */
@@ -226,7 +241,18 @@ a {
 .calendar-button-box {
     margin-top: 10%;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.calendar-add-event {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.calendar-new-group-button,
+.calendar-join-group-button {
+    width: 48%;
 }
 
 .calendar-new-group,
@@ -278,37 +304,26 @@ a {
     width: 8.5rem;
 }
 
+/* calendar new event */
+
+.new-event-main {
+    height: 782px;
+}
+
 /* tutoring */
 
 /* tutoring browse */
 
 .browse-main {
     display: flex;
-    position: relative;
     flex: 1 0;
-}
-
-.browse-link-profil {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px 15px;
-    background-color: rgb(7, 7, 61);
-    color: #fff;
-    border-bottom-left-radius: 20px;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 0.15px;
-}
-
-.browse-link-profil:hover {
-    color: #ff9800;
 }
 
 .sidebar {
     width: 400px;
     flex: none;
-    box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.2), 4px 0px 5px 0px rgba(0, 0, 0, 0.14), 1px 0px 10px 0px rgba(0, 0, 0, 0.12);
+    /* box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.2), 4px 0px 5px 0px rgba(0, 0, 0, 0.14), 1px 0px 10px 0px rgba(0, 0, 0, 0.12); */
+    box-shadow: 3px 0px 1px -2px rgba(0, 0, 0, 0.2), 2px 0px 2px 0px rgba(0, 0, 0, 0.14), 1px 0px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 .browse-search {
@@ -347,7 +362,7 @@ a {
 }
 
 .post:hover {
-  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
 }
 
 .preview-profil {
@@ -356,7 +371,6 @@ a {
     align-items: center;
     flex: 1 0;
     padding: 20px;
-    border-right: 1px solid #ccc;
 }
 
 .preview-profil-pic {
@@ -381,6 +395,9 @@ a {
     align-items: flex-start;
     flex: 3 0;
     padding: 20px;
+    background-color: rgb(35, 35, 95);
+    color: #fff;
+    border-radius: 0 20px 20px 0;
 }
 
 .post-title {
@@ -394,26 +411,8 @@ a {
 
 /* tutoring profil */
 
-.back-to-posts {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 15px;
-    background-color: rgb(7, 7, 61);
-    color: #fff;
-    border-bottom-right-radius: 20px;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 0.15px;
-}
-
-.back-to-posts:hover {
-    color: #ff9800;
-}
-
 .profil-main {
     display: flex;
-    position: relative;
 }
 
 .profil-info {
@@ -617,16 +616,59 @@ a {
 
 /* tutoring edit/new post */
 
+.new-post-main,
+.edit-post-main {
+    height: 100%;
+}
+
 /* useful */
+
+.link-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 15px;
+    background-color: rgb(7, 7, 61);
+    color: #fff;
+    border-bottom-right-radius: 20px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+}
+
+.link-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 15px;
+    background-color: rgb(7, 7, 61);
+    color: #fff;
+    border-bottom-left-radius: 20px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+}
+
+.link-top-left:hover,
+.link-top-right:hover {
+    color: #ff9800;
+}
+
+.hidden {
+    display: none !important;
+}
 
 .button {
     font-size: 0.875rem;
+    font-weight: 500;
     text-transform: uppercase;
+    text-align: center;
     color: #000;
     background-color: #ff9800;
     border: none;
     border-radius: 10px;
     padding: 0.6rem 1rem;
+    cursor: pointer;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -634,10 +676,6 @@ a {
 .button:hover {
     background-color: #ffc947;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-}
-
-.hidden {
-    display: none !important;
 }
 
 .greyout::after {
@@ -668,4 +706,101 @@ a {
     color: #842029;
     background-color: #f8d7da;
     border-color: #f5c2c7;
- }
+}
+
+.form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 3rem auto;
+    width: 480px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+}
+
+.form-title {
+    font-size: 2.125rem;
+    letter-spacing: 0.25px;
+    margin: 0 0 2rem;
+}
+
+.form-field {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    height: 3rem;
+    flex: none;
+}
+
+.form-field-textarea {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    height: 8rem;
+    flex: none;
+}
+
+.form-field-select {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    height: 3.2rem;
+    flex: none;
+}
+
+.form-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    border: 1px solid #ff9800aa;
+    border-radius: 10px;
+    outline: none;
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+}
+
+textarea.form-input {
+    resize: none;
+}
+
+.form-label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    background-color: #fff;
+    color: #888;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+    top: -0.5rem;
+    left: 0.8rem;
+    color: #ff9800;
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.form-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.form-buttons .button {
+    flex: 1 0;
+    margin: 0 1rem;
+}

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <main class="view-post-main">
-    <a class="back-to-posts" href="<?= URL ?>tutoring/browse">Retour aux annonces</a>
+    <a class="link-top-left" href="<?= URL ?>tutoring/browse">Retour aux annonces</a>
     <div class="view-post">
         <h3 class="view-post-title"><?= $annonce['titre'] ?></h3>
         <p class="view-post-desc"><?= $annonce['description'] ?></p>
