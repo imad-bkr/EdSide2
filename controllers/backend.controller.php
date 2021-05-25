@@ -173,9 +173,8 @@ function getPageCalendar() {
 
         if(isset($_POST['leave'])) {
             $idGrp = Securite::secureHTML($_POST['leave']);
-            echo $idUser;
             deleteFromAppartenirDB($idUser, $idGrp);
-            //header("Location:" .URL. "calendar&leave=1");
+            header("Location:" .URL. "calendar&leave=1");
         }
     
         $title = "EdSide - Calendrier";
