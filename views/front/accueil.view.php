@@ -19,21 +19,20 @@
             <img class="logo" src="public/img/logo.png" alt="EdSide">
             <div class="edside-presentation">
                 <h1>EdSide, get better organized</h1>
-                <p>EdSide est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. </p>
-                <p>Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
+                <p>EdSide est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
             </div>
         </section>
         <section class="info-calendar">
             <img class="section-img"  src="public/tmp/calendrier.PNG" alt="calendar">
             <div class="section-text">
                 <h2 class="section-title">CALENDRIER</h2>
-                <p>Lorem ipsum dsfdsdfs dolor sit amet consectetur adipisicing elit. Architecto quibusdam illum officia! A iste enim nulla assumenda quibusdam rem inventore distinctio reiciendis totam illo? Saepe et sunt id rem Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ex dolor fugit, soluta aliquam nemo nesciunt minima rerum suscipit dolore, veniam, eius vitae in similique delectus adipisci aperiam tempora. Nihil.</p>
+                <p>calendrier synchronisé qui permetaux utilisateursindividuellement, mais aussi en groupe,de visualiser chronologiquement des évènementsprévus au préalable. La synchronisation sert à tenir tous les membres d’un groupe informés en temps et en heure de toutes les informations relatives à un évènement</p>
             </div>
         </section>
         <section class="info-simulator">
             <div class="section-text">
                 <h2 class="section-title">SIMULATEUR</h2>
-                <p>Lorem ipsum, dsfdsffsd dolor sit amet consectetur adipisicing elit. Perferendis totam assumenda dolor vero commodi repudiandae, ipsam quasi delectus fugit quisquam illo autem cum veniam minima? Nobis, similique! Quibusdam, est ipsum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sit, provident dolorum iusto aliquid unde adipisci officia mollitia aspernatur voluptatum reprehenderit tempora id culpa aut modi at dignissimos quisquam rerum.</p>
+                <p>Plus tard, EdSide proposera également un simulateur de notes permettant aux étudiants de se situer à tout moment de leur scolarité</p>
             </div>
             <img class="section-img" src="public/tmp/simulator.PNG" alt="simulator">
         </section>
