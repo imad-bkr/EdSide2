@@ -74,6 +74,11 @@ a {
     color: #ff9800;
 }
 
+.user-menu svg {
+    width: 1.2rem;
+    transform: translate(0.2rem,0.2rem);
+}
+
 .log-out {
     background: none;
     border: none;
