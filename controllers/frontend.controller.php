@@ -3,7 +3,7 @@ require_once "config/config.php";
 require "models/pdo.php";
 
 function getPageAccueil(){
-    $title = "EdSide - Always by your side!";
+    $title = "EdSide - Get better organized";
     $desc = "Bienvenue sur EdSide! Ce site est un outil crée par des étudiants de l'EFREI,
     pour des étudiants de l'EFREI, afin de leur permettre une meilleure gestion de leur
     vie et de leur organisation scolaire";
@@ -38,7 +38,6 @@ function getPageInscription() {
             $hashed = password_hash(Securite::secureHTML($_POST['password']), PASSWORD_DEFAULT);
             $promo = Securite::secureHTML($_POST['promo']);
             $groupe = Securite::secureHTML($_POST['groupe']);
-            /* ajout de l'utilisateur dans la bdd */
             newUser($username, $email, $hashed, $promo, $groupe);
             header('Location:'.URL. 'log-in&success=1');
         } else if (isset($_POST['password']) && !empty($_POST['password'])

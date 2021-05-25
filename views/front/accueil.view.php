@@ -18,9 +18,9 @@
         <section class="presentation">
             <img class="logo" src="public/img/logo.png" alt="EdSide">
             <div class="edside-presentation">
-                <h1>EdSide, always by your side!</h1>
-                <p>EdSide est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. 
-                Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
+                <h1>EdSide, get better organized</h1>
+                <p>EdSide est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. </p>
+                <p>Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
             </div>
         </section>
         <section class="info-calendar">
