@@ -21,7 +21,7 @@ class Event {
     public function setName (string $nom) { $this->nom = $nom; }
     public function setDescription (string $description) { $this->description = $description; }
     public function setStart (string $date_debut) { $this->date_debut = $date_debut;}
-    public function setEnd (string $end) { $this->end = $end; }
+    public function setEnd (string $end) { $this->date_fin = $end; }
     public function setIdGroup (int $idGroup) { $this->id_groupe = $idGroup; }
 
 }

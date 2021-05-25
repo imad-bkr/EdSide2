@@ -47,8 +47,10 @@
         <div class="calendar-groups-list">
         <?php foreach($groupes as $groupe) : ?>
             <div class="calendar-group">
-                <input class="checkbox" id="groupe" type="checkbox" checked>
-                <label for="groupe"><?= $groupe['nom'] ?></label>
+                <?= $groupe['nom'] ?>
+            </div>
+            <div class="calendar-codegroup">
+                <?= $groupe['code'] ?>
             </div>
         <?php endforeach; ?>
         </div>
@@ -57,16 +59,22 @@
             <button class="calendar-new-group-button button">Créer groupe</button>
             <button class="calendar-join-group-button button">Rejoindre groupe</button>
         </div>
+        <?php if ($group === "Ce groupe n'existe pas") : ?>
+            <span class="alert alert-danger"><?= $group ?></span>
+        <?php endif; ?>
+        <?php if ($group === "Vous avez bien été ajouté au groupe") : ?>
+            <span class="alert alert-success"><?= $group ?></span>
+        <?php endif; ?>
     </div>
 </main>
 <form class="calendar-new-group hidden" action="" method="post">
-    <input class="calendar-new-group-name" type="text" placeholder="Nom du groupe">
-    <input class="calendar-new-group-confirm button" type="submit" value="Créer">
+    <input class="calendar-new-group-name" type="text" name="nom_groupe" placeholder="Nom du groupe">
+    <input class="calendar-new-group-confirm button" type="submit" name="creer_groupe" value="Créer">
     <input class="calendar-new-group-cancel button" type="button" value="Annuler">
 </form>
 <form class="calendar-join-group hidden" action="" method="post">
-    <input class="calendar-join-group-name" type="text" placeholder="Code du groupe">
-    <input class="calendar-join-group-confirm button" type="submit" value="Rejoindre">
+    <input class="calendar-join-group-name" type="text" name="code_groupe" placeholder="Code du groupe">
+    <input class="calendar-join-group-confirm button" type="submit" name="rejoindre_groupe" value="Rejoindre">
     <input class="calendar-join-group-cancel button" type="button" value="Annuler">
 </form>
 <script src="<?= URL ?>public/js/calendar.js"></script>

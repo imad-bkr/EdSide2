@@ -35,7 +35,7 @@ function getPageConnexion() {
             $_SESSION['access'] = "user";
             $_SESSION['user'] = $username;
             Securite::generateCookiePassword();
-            header("Location: tutoring/browse");
+            header("Location:" .URL. "calendar");
             exit();
         } else {
            $alert = "Nom d'utilisateur ou mot de passe invalide";
@@ -111,8 +111,34 @@ function getPageCalendar() {
         require 'models/Calendar/Month.php';
         require 'models/Calendar/Events.php';
         require_once "models/groups.dao.php";
+        
+        $user = getIdUser($_SESSION['user']);
+        $idUser = $user['id_user'];
 
-        $groupes = getGroupesFromDB();
+        if(isset($_POST['creer_groupe']) && !empty($_POST['creer_groupe'])) {
+            if (isset($_POST['nom_groupe']) && !empty($_POST['nom_groupe'])){
+                $nom_groupe = Securite::secureHTML($_POST['nom_groupe']);
+                $code_groupe = uniqid();
+                InsertGroupIntoBD($nom_groupe, $code_groupe);
+                $idGroupe = getIdGroupeFromDB($nom_groupe);
+                SetAppartenirIntoBD($idGroupe['id_groupe'], $idUser);
+            }
+        }
+
+        $group = "";
+        if(isset($_POST['rejoindre_groupe']) && !empty($_POST['rejoindre_groupe'])) {
+            if (isset($_POST['code_groupe']) && !empty($_POST['code_groupe'])){
+                $code_groupe = Securite::secureHTML($_POST['code_groupe']);
+                if ($groupe = findGroupByCodeDB($code_groupe)){
+                    SetAppartenirIntoBD($groupe['id_groupe'], $idUser);
+                    $group = "Vous avez bien été ajouté au groupe";
+                } else {
+                    $group = "Ce groupe n'existe pas";
+                }
+            }
+        }
+
+        $groupes = getGroupesUserFromDB($idUser);
         
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
@@ -162,12 +188,16 @@ function getPageCalendarEvent() {
         require 'models/Calendar/Events.php';
         require 'models/Calendar/EventValidator.php'; 
 
+        $user = getIdUser($_SESSION['user']);
+        $idUser = $user['id_user'];
+
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
 
         if (!isset($_GET['id'])) {
             header('Location:'. URL . 'calendar');
         }
+        
 
         try {
             $event = $events->find($_GET['id']);
@@ -175,7 +205,7 @@ function getPageCalendarEvent() {
             header('Location:'. URL . 'calendar');
         }
 
-        $groupes = getGroupesFromDB();
+        $groupes = getGroupesUserFromDB($idUser);
 
         $data = [
             'name'        => $event->getName(),
@@ -230,7 +260,10 @@ function getPageCalendarNewEvent() {
         require 'models/Calendar/Event.php';
         require 'models/Calendar/EventValidator.php'; 
 
-        $groupes = getGroupesFromDB();
+        $user = getIdUser($_SESSION['user']);
+        $idUser = $user['id_user'];
+
+        $groupes = getGroupesUserFromDB($idUser);
 
         $data = [
             'date'  => $_GET['date'] ?? date('Y-m-d'),
