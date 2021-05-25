@@ -1,5 +1,5 @@
 <?php 
-
+ini_set('display_errors', 'off');
 require_once "models/user.dao.php";
 require_once "config/config.php";
 
