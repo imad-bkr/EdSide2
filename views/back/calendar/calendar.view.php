@@ -50,7 +50,7 @@
                 <div class="calendar-group">
                     <p class="calendar-group-name"><span>Nom : </span><?= $groupe['nom'] ?></p>
                     <p class="calendar-group-code"><span>Code : </span><?= $groupe['code'] ?></p>
-                    <div class="calendar-group-edit" title="modifier groupe"><?php echo file_get_contents("public/icons/edit.svg"); ?></div>
+                    <!-- <div class="calendar-group-edit" title="modifier groupe"><?php echo file_get_contents("public/icons/edit.svg"); ?></div> -->
                     <form action="" method="POST">
                         <button class="calendar-group-leave" type="submit" title="quitter groupe"><?php echo file_get_contents("public/icons/arrow-right.svg"); ?></button>
                     </form>
