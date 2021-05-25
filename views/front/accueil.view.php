@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,9 @@
     <meta name="description" content="<?= $desc ?>">
     <title><?= $title ?></title>
     <link rel="stylesheet" href=<?= $css ?>>
-    <link rel="icon" href="public/img/favicon.ico" sizes="32x32"> 
+    <link rel="icon" href="public/img/favicon.ico" sizes="32x32">
 </head>
+
 <body>
     <header class="header">
         <img src="public/img/flag.png" alt="language">
@@ -23,7 +25,7 @@
             </div>
         </section>
         <section class="info-calendar">
-            <img class="section-img"  src="public/tmp/calendrier.PNG" alt="calendar">
+            <img class="section-img" src="public/tmp/calendrier.PNG" alt="calendar">
             <div class="section-text">
                 <h2 class="section-title">CALENDRIER</h2>
                 <p>calendrier synchronisé qui permetaux utilisateursindividuellement, mais aussi en groupe,de visualiser chronologiquement des évènementsprévus au préalable. La synchronisation sert à tenir tous les membres d’un groupe informés en temps et en heure de toutes les informations relatives à un évènement</p>
@@ -44,6 +46,9 @@
             </div>
         </section>
     </main>
-    <footer class="footer">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur eligendi tempora corporis rem maiores architecto adipisci veritatis sunt aperiam, nemo exercitationem dignissimos dolor, iste assumenda explicabo dicta expedita autem temporibus.</footer>
+    <footer class="footer">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+    </footer>
 </body>
+
 </html>
