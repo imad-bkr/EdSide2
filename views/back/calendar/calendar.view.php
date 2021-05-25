@@ -63,10 +63,10 @@
             <a class="calendar-add-event button" href="<?= URL ?>calendar/new-event">Ajouter un évènement</a>
         </div>
         <?php if ($group === "Ce groupe n'existe pas") : ?>
-            <span class="alert alert-danger"><?= $group ?></span>
+            <span class="calendar-group-alert alert alert-danger"><?= $group ?></span>
         <?php endif; ?>
         <?php if ($group === "Vous avez bien été ajouté au groupe") : ?>
-            <span class="alert alert-success"><?= $group ?></span>
+            <span class="calendar-group-alert alert alert-success"><?= $group ?></span>
         <?php endif; ?>
     </div>
 </main>

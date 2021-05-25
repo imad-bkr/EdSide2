@@ -222,6 +222,7 @@ a {
 }
 
 .calendar-groups-box {
+    position: relative;
     margin: 20px;
     padding: 10px;
     flex: 1 1;
@@ -351,6 +352,14 @@ a {
 .calendar-join-group-confirm,
 .calendar-join-group-cancel {
     width: 8.5rem;
+}
+
+.calendar-group-alert {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 200px;
 }
 
 /* calendar new event */
