@@ -18,10 +18,10 @@
     </header>
     <main class="main">
         <section class="presentation">
-            <img class="logo" src="public/img/logo.png" alt="EdSide">
+            <img class="logo" src="public/img/logo.png" alt="Edside">
             <div class="edside-presentation">
-                <h1>EdSide, get better organized</h1>
-                <p>EdSide est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
+                <h1>Edside, get better organized</h1>
+                <p>Edside est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
             </div>
         </section>
         <section class="info-calendar">
@@ -34,7 +34,7 @@
         <section class="info-simulator">
             <div class="section-text">
                 <h2 class="section-title">SIMULATEUR</h2>
-                <p>Plus tard, EdSide proposera également un simulateur de notes permettant aux étudiants de se situer à tout moment de leur scolarité</p>
+                <p>Plus tard, Edside proposera également un simulateur de notes permettant aux étudiants de se situer à tout moment de leur scolarité</p>
             </div>
             <div class="coming-soon">Coming soon</div>
         </section>
@@ -42,7 +42,7 @@
             <img class="section-img" src="public/tmp/parrainage.PNG" alt="tutoring">
             <div class="section-text">
                 <h2 class="section-title">PARRAINAGE</h2>
-                <p>EdSide propose un système de parrainage permettant aux étudiants de parrainer d’autres étudiants, mais aussi permettant aux étudiants en recherche de parrains de trouver un parrain correspondant à leurs attentes. Ceci grâce à divers outils tels que les annonces, les tags ou encore les recherches ciblées</p>
+                <p>Edside propose un système de parrainage permettant aux étudiants de parrainer d’autres étudiants, mais aussi permettant aux étudiants en recherche de parrains de trouver un parrain correspondant à leurs attentes. Ceci grâce à divers outils tels que les annonces, les tags ou encore les recherches ciblées</p>
             </div>
         </section>
     </main>
