@@ -11,7 +11,7 @@
         <div class="search-tags">
             <form class="browse-search" action="#" method="POST">
                 <div class="form-field">
-                    <input class="form-input browse-search-bar" type="search" name="bytags" placeholder="">
+                    <input class="form-input browse-search-bar" type="search" name="bytags" placeholder=" ">
                     <label class="form-label browse-search-label">Recherche par mot-clé:</label>
                 </div>
                 <input class="button" type="submit" name="search" value="rechercher">

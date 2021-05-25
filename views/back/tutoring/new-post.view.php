@@ -4,15 +4,15 @@
     <form class="form" action="" method="POST">
         <h1 class="form-title">Nouvelle annonce</h1>
         <div class="form-field">
-            <input class="form-input" type="text" name="title" placeholder="">
+            <input class="form-input" type="text" name="title" placeholder=" ">
             <label class="form-label">Titre</label>
         </div>
         <div class="form-field-textarea">
-            <textarea class="form-input" name="desc" placeholder=""></textarea>
+            <textarea class="form-input" name="desc" placeholder=" "></textarea>
             <label class="form-label">Description</label>
         </div>
         <div class="form-field">
-            <input class="form-input" type="text" name="tags" placeholder="">
+            <input class="form-input" type="text" name="tags" placeholder=" ">
             <label class="form-label">Tags</label>
         </div>
         <input class="button" type="submit" name="submit" value="Valider">
