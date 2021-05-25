@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <main class="simulator-main">
-    <div>
-        Comming soon
+    <div class="coming-soon">
+        Coming soon
     </div>
 </main>
 <?php
