@@ -36,7 +36,7 @@
                 <h2 class="section-title">SIMULATEUR</h2>
                 <p>Plus tard, EdSide proposera également un simulateur de notes permettant aux étudiants de se situer à tout moment de leur scolarité</p>
             </div>
-            <img class="section-img" src="public/tmp/simulator.PNG" alt="simulator">
+            <div class="coming-soon">Coming soon</div>
         </section>
         <section class="info-tutoring">
             <img class="section-img" src="public/tmp/parrainage.PNG" alt="tutoring">
