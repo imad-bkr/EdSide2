@@ -225,8 +225,8 @@ a {
     margin: 20px;
     padding: 10px;
     flex: 1 1;
-    border: 1px solid #000;
     border-radius: 10px;
+    text-align: center;
 }
 
 .calendar-groups-list {
@@ -235,11 +235,60 @@ a {
 }
 
 .calendar-group {
-    margin: 10px;
+    position: relative;
+    margin: 10px 0;
+    padding: 1rem;
+    background-color: rgb(35, 35, 95);
+    border-radius: 10px;
+    color: #fff;
+    text-align: left;
+}
+
+.calendar-group-name {
+    margin: 0 0 0.5rem;
+}
+
+.calendar-group-code {
+    margin: 0.5rem 0 0;
+    color: #ccc;
+}
+
+.calendar-group-code span{
+    color: #fff;
+}
+
+.calendar-group-edit {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translate(-100%, -50%);
+    fill: #fff;
+}
+
+.calendar-group-leave {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(0, -50%);
+    background: none;
+    border: none;
+    fill: #fff;
+}
+
+.calendar-group:hover .calendar-group-edit,
+.calendar-group:hover .calendar-group-leave {
+    display: block;
+}
+
+.calendar-group-edit:hover,
+.calendar-group-leave:hover {
+    fill: #ff9800;
 }
 
 .calendar-button-box {
-    margin-top: 10%;
+    margin-top: 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
