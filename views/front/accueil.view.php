@@ -21,7 +21,7 @@
             <img class="logo" src="public/img/logo.png" alt="Edside">
             <div class="edside-presentation">
                 <h1>Edside, get better organized</h1>
-                <p>Edside est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI. Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
+                <p>Edside est une plateforme de gestion de cours créée par des étudiants de l'EFREI pour des étudiants de l'EFREI.<br>Vous y trouverez des outils permettant une meilleure organisation de votre scolarité.</p>
             </div>
         </section>
         <section class="info-calendar">

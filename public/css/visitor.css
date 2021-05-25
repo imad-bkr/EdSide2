@@ -84,11 +84,18 @@ p {
     padding: 60px 30px;
 }
 
+.presentation p,
+.info-calendar p,
+.info-simulator p,
+.info-tutoring p {
+    line-height: 2;
+}
+
 .presentation::after {
     content: "";
     display: block;
     position: absolute;
-    top: 350px;
+    top: 362px;
     width: 100%;
     height: 40px;
     background-color: rgb(35, 35, 95);
