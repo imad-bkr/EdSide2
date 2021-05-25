@@ -154,6 +154,12 @@ a {
     text-decoration: underline;
 }
 
+/* settings */
+
+.settings-main {
+    height: 563px;
+}
+
 /* calendar */
 
 .calendar-main {
@@ -380,12 +386,13 @@ a {
 }
 
 /* calendar new/edit event */
+
 .new-event-main {
-    height: 782px;
+    height: 783.2px;
 }
 
 .event-main {
-    height: 872.4px;
+    height: 833.2px;
     padding-top: 50px;
 }
 
@@ -705,7 +712,7 @@ a {
 
 .new-post-main,
 .edit-post-main {
-    height: 100%;
+    height: 564px;
 }
 
 /* useful */
