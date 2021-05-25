@@ -22,7 +22,7 @@
             <a class="post" href="<?= URL ?>tutoring/browse">
                 <div class="preview-profil">
                     <img class="preview-profil-pic" src="https://placehold.co/100x100" alt="photo de profil">
-                    <h3 class="preview-profil-name"><?= $user['username']?></h3>
+                    <h3 class="preview-profil-name"><?= $user['username']?> - <?= $user['promo'] . " ". $user['groupe']?></h3>
                     <p class="preview-profil-desc"><?= $user['description_profil']?></p>
                     <p class="preview-profil-desc"><?= $user['contact_info']?></p>
                 </div>

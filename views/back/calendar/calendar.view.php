@@ -39,7 +39,7 @@
                                 <?php foreach($groupes as $groupe) : 
                                         if($event['id_groupe'] === $groupe['id_groupe']) :?>
                                         <div id="events" class="calendar-event">
-                                            <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
+                                            <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a title="<?= $event['description']?>" href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>                

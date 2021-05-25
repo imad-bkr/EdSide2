@@ -13,7 +13,7 @@
 
 <body>
     <header class="header">
-        <a href="<?= URL ?>tutoring/browse"><img class="logo-mini" src="<?= URL ?>public/img/logo.png" alt="EdSide"></a>
+        <a href="<?= URL ?>calendar"><img class="logo-mini" src="<?= URL ?>public/img/logo.png" alt="EdSide"></a>
         <div class="user"><?php echo $_SESSION['user']; ?></div>
         <ul class="user-menu hidden">
             <a href="<?= URL ?>settings">
