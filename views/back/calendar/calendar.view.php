@@ -36,9 +36,13 @@
                         <td class="<?= $month->withinMonth($date) ? '' : 'calendar-othermonth'; ?>">
                             <div class="calendar-day"><?= $date->format('d'); ?></div>
                             <?php foreach ($eventsForDay as $event) : ?>
-                                <div id="events" class="calendar-event">
-                                    <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
-                                </div>
+                                <?php foreach($groupes as $groupe) : 
+                                        if($event['id_groupe'] === $groupe['id_groupe']) :?>
+                                        <div id="events" class="calendar-event">
+                                            <?= (new DateTime($event['date_debut']))->format('H:i') ?> - <a href="<?= URL ?>calendar/event&id=<?= $event['id_evenement'] ?>"><?= Securite::secureHTML(($event['nom'])); ?></a>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>                
                             <?php endforeach; ?>
                         </td>
                     <?php endforeach; ?>
