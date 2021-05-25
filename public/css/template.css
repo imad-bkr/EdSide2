@@ -265,7 +265,7 @@ a {
     color: #ccc;
 }
 
-.calendar-group-code span{
+.calendar-group-code span {
     color: #fff;
 }
 
@@ -373,10 +373,22 @@ a {
     width: 200px;
 }
 
-/* calendar new event */
-
+/* calendar new/edit event */
 .new-event-main {
     height: 782px;
+}
+
+.event-main {
+    height: 872.4px;
+    padding-top: 50px;
+}
+
+.remove-event {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
 }
 
 /* tutoring */

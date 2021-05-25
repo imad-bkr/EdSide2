@@ -10,7 +10,7 @@
     <form class="form" action="" method="POST">
         <h1 class="form-title">Ajouter un évènement</h1>
         <div class="form-field">
-            <input id="name" class="form-input" type="text" required class="event-name" name="name" placeholder="" value="<?= isset($data['name']) ? Securite::secureHTML($data['name']) : ''; ?>">
+            <input class="form-input" id="name" type="text" required class="event-name" name="name" placeholder="" value="<?= isset($data['name']) ? Securite::secureHTML($data['name']) : ''; ?>">
             <label class="form-label" for="name">Nom</label>
             <?php if (isset($errors['name'])) : ?>
                 <small><?= $errors['name']; ?></small>
