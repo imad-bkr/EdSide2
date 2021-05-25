@@ -427,14 +427,6 @@ a {
     align-items: center;
 }
 
-.browse-search-label {
-    align-self: flex-start;
-}
-
-.browse-search-bar {
-    width: 100%;
-}
-
 .posts {
     min-height: 0;
     padding: 40px 10px 10px;

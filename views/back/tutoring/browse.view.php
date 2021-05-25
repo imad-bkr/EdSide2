@@ -2,16 +2,18 @@
 <main class="browse-main">
     <a class="link-top-right" href="<?= URL ?>tutoring/profil">Mon profil</a>
     <aside class="sidebar">
-        <div class="parrain-fillot">
+        <!-- <div class="parrain-fillot">
             Parrain:
             <input class="parrain-checkbox" type="checkbox" name="parrain">
             Fillot:
             <input class="fillot-checkbox" type="checkbox" name="fillot">
-        </div>
+        </div> -->
         <div class="search-tags">
             <form class="browse-search" action="#" method="POST">
-                <label class="browse-search-label">Recherche par mot-clé:</label>
-                <input class="browse-search-bar" type="search" name="bytags">
+                <div class="form-field">
+                    <input class="form-input browse-search-bar" type="search" name="bytags" placeholder="">
+                    <label class="form-label browse-search-label">Recherche par mot-clé:</label>
+                </div>
                 <input class="button" type="submit" name="search" value="rechercher">
             </form>
         </div>
