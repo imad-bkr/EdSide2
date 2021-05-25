@@ -41,7 +41,7 @@
             <img class="section-img" src="public/tmp/parrainage.PNG" alt="tutoring">
             <div class="section-text">
                 <h2 class="section-title">PARRAINAGE</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus provident culpa labore nihil mollitia corporis magni minima ipsa illum, ab qui earum perferendis repellendus iusto doloremque! Neque mollitia odit ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque amet sint a sit quidem dignissimos vitae numquam facere voluptates aliquam, ea quos adipisci laudantium veniam accusamus quasi aperiam ab odit?</p>
+                <p>EdSide propose un système de parrainage permettant aux étudiants de parrainer d’autres étudiants, mais aussi permettant aux étudiants en recherche de parrains de trouver un parrain correspondant à leurs attentes. Ceci grâce à divers outils tels que les annonces, les tags ou encore les recherches ciblées</p>
             </div>
         </section>
     </main>
