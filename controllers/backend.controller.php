@@ -312,7 +312,9 @@ function getPageTutoringBrowse() {
 
     if(Securite::verificationAccess()) {
         require_once "models/tutoring.dao.php";
+        require_once "models/user.dao.php";
         $annonces = getAnnoncesFromBD();
+
         $title = "EdSide - Les annonces";
         $desc = "Cette page vous permet de chercher un parrain ou un filleul!";
         $curr = "tutoring";

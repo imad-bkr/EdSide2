@@ -87,3 +87,15 @@ function insertContactInfoToUserInDB($contact_info, $idUser) {
     $stmt->execute();
     $stmt->closeCursor();
 }
+
+function getUserById($idUser) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM utilisateurs
+    WHERE id_user = :id";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(":id", $idUser, PDO::PARAM_INT);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $user;
+}
