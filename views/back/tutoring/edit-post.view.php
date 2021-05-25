@@ -2,7 +2,7 @@
 <main class="edit-post-main">
     <a class="link-top-left" href="<?= URL ?>tutoring/profil">Retour au profil</a>
     <form class="form" action="#" method="POST">
-        <h1 class="form-title">Nouvel annonce</h1>
+        <h1 class="form-title">Modifier l'annonce</h1>
         <div class="form-field">
             <input class="form-input" type="text" name="title" placeholder="" value="<?= $annonce['titre'] ?>">
             <label class="form-label">Titre</label>

@@ -2,7 +2,7 @@
 <main class="new-post-main">
     <a class="link-top-left" href="<?= URL ?>tutoring/profil">Annuler</a>
     <form class="form" action="" method="POST">
-        <h1 class="form-title">Nouvel annonce</h1>
+        <h1 class="form-title">Nouvelle annonce</h1>
         <div class="form-field">
             <input class="form-input" type="text" name="title" placeholder="">
             <label class="form-label">Titre</label>

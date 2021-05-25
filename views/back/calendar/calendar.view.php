@@ -55,9 +55,9 @@
         <?php endforeach; ?>
         </div>
         <div class="calendar-button-box">
-            <a class="calendar-add-event button" href="<?= URL ?>calendar/new-event">Ajouter évènement</a>
-            <button class="calendar-new-group-button button">Créer groupe</button>
-            <button class="calendar-join-group-button button">Rejoindre groupe</button>
+            <button class="calendar-new-group-button button">Créer un groupe</button>
+            <button class="calendar-join-group-button button">Rejoindre un groupe</button>
+            <a class="calendar-add-event button" href="<?= URL ?>calendar/new-event">Ajouter un évènement</a>
         </div>
         <?php if ($group === "Ce groupe n'existe pas") : ?>
             <span class="alert alert-danger"><?= $group ?></span>

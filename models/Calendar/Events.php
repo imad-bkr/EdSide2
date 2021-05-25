@@ -17,7 +17,8 @@ class Events {
      * @return array
      */
     public function getEventsBetween (\DateTime $start, \DateTime $end): array {
-        $sql = "SELECT * FROM evenements WHERE date_debut BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
+        $sql = "SELECT * FROM evenements 
+        WHERE date_debut BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
         $statement = $this->pdo->query($sql);
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $results;
