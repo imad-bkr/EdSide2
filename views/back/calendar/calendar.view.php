@@ -67,7 +67,9 @@
         <div class="calendar-button-box">
             <button class="calendar-new-group-button button">Créer un groupe</button>
             <button class="calendar-join-group-button button">Rejoindre un groupe</button>
-            <a class="calendar-add-event button" href="<?= URL ?>calendar/new-event">Ajouter un évènement</a>
+            <?php if ($groupes) :?>
+                <a class="calendar-add-event button" href="<?= URL ?>calendar/new-event">Ajouter un évènement</a>
+            <?php endif;?>
         </div>
         <?php if ($group === "Ce groupe n'existe pas") : ?>
             <span class="calendar-group-alert alert alert-danger"><?= $group ?></span>
