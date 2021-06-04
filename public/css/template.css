@@ -995,7 +995,7 @@ textarea.form-input {
 @media only screen and (max-width: 800px) {
     .post {
         flex-direction: column;
-        height: 40rem;
+        min-width: 20rem;
     }
 
     .post-body {
