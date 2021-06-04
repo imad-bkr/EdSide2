@@ -76,7 +76,7 @@ a {
 
 .user-menu svg {
     width: 1.2rem;
-    transform: translate(0.2rem,0.2rem);
+    transform: translate(0.2rem, 0.2rem);
 }
 
 .log-out {
@@ -173,6 +173,7 @@ a {
 
 .calendar-main {
     display: flex;
+    min-height: 833.2px;
 }
 
 .calendar-box {
@@ -208,7 +209,7 @@ a {
 
 .calendar-table {
     width: 100%;
-    height: calc(100vh - 281px);
+    height: calc(100% - 281px);
     margin: 10px 0 0;
     border-collapse: collapse;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -226,7 +227,7 @@ a {
     border: 1px solid #ccc;
     vertical-align: top;
     width: 14.29%;
-    height: calc(20%-1rem);
+    height: calc(20% - 1rem);
     font-size: 0.75rem;
 }
 
@@ -235,7 +236,7 @@ a {
 }
 
 .calendar-table--6weeks td {
-    height: calc(16.66%-1rem);
+    height: calc(16.66% - 1rem);
 }
 
 .calendar-weekday {
@@ -340,7 +341,7 @@ a {
     justify-content: space-between;
 }
 
-.calendar-add-event {
+.calendar-new-event-button {
     width: 100%;
     margin: 10px 0;
 }
@@ -407,11 +408,7 @@ a {
     width: 200px;
 }
 
-/* calendar new/edit event */
-
-.new-event-main {
-    height: 783.2px;
-}
+/* calendar edit event */
 
 .event-main {
     height: 833.2px;
@@ -426,6 +423,44 @@ a {
     margin: 0 auto;
 }
 
+/* simulator */
+
+.simulator-form {
+    margin: 3rem auto;
+    width: 480px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+}
+
+.simulator-table {
+    display: table;
+    width: 80%;
+    margin: 10px auto;
+    border-collapse: collapse;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.simulator-table th {
+    width: 25%;
+    padding: 0.25rem;
+    border: 1px solid #000;
+    background-color: rgb(35, 35, 95);
+    color: #fff;
+}
+
+.simulator-table td {
+    width: 25%;
+    text-align: center;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+}
+
 /* tutoring */
 
 /* tutoring browse */
@@ -438,7 +473,6 @@ a {
 .sidebar {
     width: 400px;
     flex: none;
-    /* box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.2), 4px 0px 5px 0px rgba(0, 0, 0, 0.14), 1px 0px 10px 0px rgba(0, 0, 0, 0.12); */
     box-shadow: 3px 0px 1px -2px rgba(0, 0, 0, 0.2), 2px 0px 2px 0px rgba(0, 0, 0, 0.14), 1px 0px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
@@ -462,11 +496,11 @@ a {
 .post {
     display: flex;
     width: 95%;
-    height: 300px;
+    height: 20rem;
     margin: 15px;
-    border-radius: 20px;
+    border-radius: 2rem;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .post:hover {
@@ -478,7 +512,8 @@ a {
     flex-direction: column;
     align-items: center;
     flex: 1 0;
-    padding: 20px;
+    padding: 2rem;
+    overflow: auto;
 }
 
 .preview-profil-pic {
@@ -502,10 +537,11 @@ a {
     flex-direction: column;
     align-items: flex-start;
     flex: 3 0;
-    padding: 20px;
+    padding: 2rem;
     background-color: rgb(35, 35, 95);
     color: #fff;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 2rem 2rem 0;
+    overflow: auto;
 }
 
 .post-title {
@@ -778,7 +814,7 @@ a {
     padding: 0.6rem 1rem;
     cursor: pointer;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover {
@@ -818,11 +854,13 @@ a {
 
 .form {
     position: absolute;
+    top: 120px;
     left: 0;
     right: 0;
     margin: 3rem auto;
     width: 480px;
     padding: 2rem;
+    background-color: #fff;
     border-radius: 20px;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     display: flex;
@@ -914,22 +952,59 @@ textarea.form-input {
 }
 
 .coming-soon {
-  position: absolute;
-  top: 70px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 70%;
-  height: 300px;
-  padding: 20px;
-  border-radius: 20px;
-  background-color: rgb(35, 35, 95);
-  color: #fff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  text-transform: UPPERCASE;
-  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 70%;
+    height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(35, 35, 95);
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    text-transform: UPPERCASE;
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+@media only screen and (max-width: 1050px) {
+    .calendar-main {
+        flex-direction: column;
+    }
+
+    .browse-main {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        padding-top: 3rem;
+        width: 100%;
+    }
+
+    .posts {
+        padding-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .post {
+        flex-direction: column;
+        height: 40rem;
+    }
+
+    .post-body {
+        flex: 1 0;
+        border-radius: 0 0 2rem 2rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-bar {
+        flex-direction: column;
+    }
 }
