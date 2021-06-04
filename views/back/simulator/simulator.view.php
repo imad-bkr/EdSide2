@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <main class="simulator-main">
     <form id="simulator-add-grade" class="simulator-form" method="POST">
-        <h1 class="form-title">Enter grade</h1>
+        <h1 class="form-title">Nouvelle note</h1>
         <div class="form-field">
             <input class="form-input" type="text" name="ue" placeholder=" ">
             <label class="form-label">UE</label>
