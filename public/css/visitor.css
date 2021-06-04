@@ -230,6 +230,7 @@ p {
     }
 
     .section-img {
+        max-height: none;
         max-width: 100%;
         width: 100%;
     }
