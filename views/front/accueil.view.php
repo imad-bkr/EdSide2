@@ -45,6 +45,25 @@
                 <p>Edside propose un système de parrainage permettant aux étudiants de parrainer d’autres étudiants, mais aussi permettant aux étudiants en recherche de parrains de trouver un parrain correspondant à leurs attentes. Ceci grâce à divers outils tels que les annonces, les tags ou encore les recherches ciblées</p>
             </div>
         </section>
+        <section class="about-us">
+            <h2 class="about-us-title">A Propos de nous</h2>
+            <div class="member">
+                <h3 class="member-name">Imadeddine Boukhari</h3>
+                <p class="member-desc">S'est occupé de la page d'accueil et a réalisé les maquettes fonctionnelle et graphique ainsi que le logo. Il a aussi réalisé presque intégralement le backend du site et la gestion de la base de donnée.</p>
+            </div>
+            <div class="member">
+                <h3 class="member-name">Nolan Maksud</h3>
+                <p class="member-desc">A réalisé la majeure partie du frontend et du design général, incluant le coté responsive du site et les interactions javascript.</p>
+            </div>
+            <div class="member">
+                <h3 class="member-name">Karam Mansour</h3>
+                <p class="member-desc">A participé à l'ensemble du site, a réalisé une première version du projet web que nous avons lâchement abandonné en apprenant que l'on pouvait se servir de notre projet transverse.</p>
+            </div>
+            <div class="member">
+                <h3 class="member-name">Sama Fahd</h3>
+                <p class="member-desc">A participé à l'ensemble du site, a également participé à la conception et aux décisions d'implémentations.</p>
+            </div>
+        </section>
     </main>
     <footer class="footer">
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
