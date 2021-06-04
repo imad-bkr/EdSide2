@@ -25,21 +25,21 @@
             </div>
         </section>
         <section class="info-calendar">
-            <img class="section-img" src="public/tmp/calendrier.PNG" alt="calendar">
+            <img class="section-img" src="public/img/calendrier.png" alt="calendar">
             <div class="section-text">
                 <h2 class="section-title">CALENDRIER</h2>
                 <p>Edside propose un calendrier synchronisé qui permet aux utilisateurs individuellement, mais aussi en groupe,de visualiser chronologiquement des évènements prévus au préalable. La synchronisation sert à tenir tous les membres d’un groupe informés en temps et en heure de toutes les informations relatives à un évènement</p>
             </div>
         </section>
         <section class="info-simulator">
+            <img class="section-img" src="public/img/simulator.png" alt="tutoring">
             <div class="section-text">
                 <h2 class="section-title">SIMULATEUR</h2>
                 <p>Plus tard, Edside proposera également un simulateur de notes permettant aux étudiants de se situer à tout moment de leur scolarité</p>
             </div>
-            <div class="coming-soon">Coming soon</div>
         </section>
         <section class="info-tutoring">
-            <img class="section-img" src="public/tmp/parrainage.PNG" alt="tutoring">
+            <img class="section-img" src="public/img/parrainage.png" alt="tutoring">
             <div class="section-text">
                 <h2 class="section-title">PARRAINAGE</h2>
                 <p>Edside propose un système de parrainage permettant aux étudiants de parrainer d’autres étudiants, mais aussi permettant aux étudiants en recherche de parrains de trouver un parrain correspondant à leurs attentes. Ceci grâce à divers outils tels que les annonces, les tags ou encore les recherches ciblées</p>

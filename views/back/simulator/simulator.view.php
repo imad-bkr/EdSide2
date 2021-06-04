@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <main class="simulator-main">
     <form id="simulator-add-grade" class="simulator-form" method="POST">
-        <h1 class="form-title">Enter grade</h1>
+        <h1 class="form-title">Nouvelle note</h1>
         <div class="form-field">
             <input class="form-input" type="text" name="ue" placeholder=" ">
             <label class="form-label">UE</label>
@@ -11,11 +11,11 @@
             <label class="form-label">Module</label>
         </div>
         <div class="form-field">
-            <input class="form-input" type="number" name="coef" placeholder=" ">
+            <input class="form-input" type="number" step="any" name="coef" placeholder=" ">
             <label class="form-label">Coefficient</label>
         </div>
         <div class="form-field">
-            <input class="form-input" type="number" name="grade" placeholder=" ">
+            <input class="form-input" type="number" step="any" name="grade" placeholder=" ">
             <label class="form-label">Note</label>
         </div>
         <input class="button" type="submit" name="add" value="Ajouter note">
