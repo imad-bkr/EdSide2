@@ -92,7 +92,7 @@
     <input class="calendar-join-group-cancel button" type="button" value="Annuler">
 </form>
 <!--//* New event -->
-<form class="calendar-new-event form hidden" action="" method="POST">
+<form class="calendar-new-event form popup hidden" action="" method="POST">
     <h1 class="form-title">Ajouter un évènement</h1>
     <div class="form-field">
         <input class="form-input" id="name" type="text" required class="event-name" name="name" placeholder=" " value="<?= isset($data['name']) ? Securite::secureHTML($data['name']) : ''; ?>">

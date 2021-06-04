@@ -855,7 +855,7 @@ a {
 
 .form {
     position: absolute;
-    top: 120px;
+    top: 0;
     left: 0;
     right: 0;
     margin: 3rem auto;
@@ -950,6 +950,10 @@ textarea.form-input {
 .form-buttons .button {
     flex: 1 0;
     margin: 0 1rem;
+}
+
+.popup {
+    top: 120px;
 }
 
 .coming-soon {
