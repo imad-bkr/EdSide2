@@ -108,9 +108,11 @@ function getPageCalendar() {
     }   
 
     if(Securite::verificationAccess()) {
-        require 'models/Calendar/Month.php';
-        require 'models/Calendar/Events.php';
         require_once "models/groups.dao.php";
+        require 'models/Calendar/Month.php';
+        require 'models/Calendar/Event.php';
+        require 'models/Calendar/EventValidator.php'; 
+        require 'models/Calendar/Events.php';
         
         $user = getIdUser($_SESSION['user']);
         $idUser = $user['id_user'];
@@ -139,6 +141,33 @@ function getPageCalendar() {
         }
 
         $groupes = getGroupesUserFromDB($idUser);
+
+        $data = [
+            'date'  => $_GET['date'] ?? date('Y-m-d'),
+            'start' => date('H:i'),
+            'end'   => date('H:i')
+        ];
+        
+        $validator = new \Calendar\Validator($data);
+        if (!$validator->validate('date', 'date')) {
+            $data['date'] = date('Y-m-d');
+        }
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $validator = new \Calendar\EventValidator();
+            $errors = $validator->validates($_POST);
+            $group = Securite::secureHTML($_POST['groupe']);
+            $idGrp = getGroupeFromDB($group);
+            if (empty($errors)) {
+                $bdd = connexionPDO();
+                $events = new \Calendar\Events($bdd);
+                $event = $events->hydrate(new \Calendar\Event(), $data, $idGrp['id_groupe']);
+                $events->create($event);
+                header('Location:'.URL. 'calendar&created=1');
+                exit();
+            }
+        }  
         
         $bdd = connexionPDO();
         $events = new Calendar\Events($bdd);
@@ -254,60 +283,6 @@ function getPageCalendarEvent() {
         $css = "public/css/template.css";
 
         require_once "views/back/calendar/event.view.php";
-    } else {
-        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
-    }
-}
-
-function getPageCalendarNewEvent() {
-    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
-        session_destroy();
-        header("Location:".URL."accueil");
-    }
-
-    if(Securite::verificationAccess()) {
-        require_once "models/groups.dao.php";
-        require 'models/Calendar/Events.php';
-        require 'models/Calendar/Event.php';
-        require 'models/Calendar/EventValidator.php'; 
-
-        $user = getIdUser($_SESSION['user']);
-        $idUser = $user['id_user'];
-
-        $groupes = getGroupesUserFromDB($idUser);
-
-        $data = [
-            'date'  => $_GET['date'] ?? date('Y-m-d'),
-            'start' => date('H:i'),
-            'end'   => date('H:i')
-        ];
-        $validator = new \Calendar\Validator($data);
-        if (!$validator->validate('date', 'date')) {
-            $data['date'] = date('Y-m-d');
-        }
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = $_POST;
-            $validator = new \Calendar\EventValidator();
-            $errors = $validator->validates($_POST);
-            $group = Securite::secureHTML($_POST['groupe']);
-            $idGrp = getGroupeFromDB($group);
-            if (empty($errors)) {
-                $bdd = connexionPDO();
-                $events = new \Calendar\Events($bdd);
-                $event = $events->hydrate(new \Calendar\Event(), $data, $idGrp['id_groupe']);
-                $events->create($event);
-                header('Location:'.URL. 'calendar&created=1');
-                exit();
-            }
-        }  
-        
-        $title = "EdSide - Nouvel évenement";
-        $desc = "Créez un nouvel évenement";
-        $curr = "calendar";
-        $css = "public/css/template.css";
-
-        require_once "views/back/calendar/new-event.view.php";
     } else {
         throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
     }
