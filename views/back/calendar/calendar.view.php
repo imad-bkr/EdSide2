@@ -120,7 +120,7 @@
         <label class="form-label" for="end">Fin</label>
     </div>
     <div class="form-field-textarea">
-        <textarea class="form-input" name="description" id="description"><?= isset($data['description']) ? Securite::secureHTML(($data['description'])) : ''; ?></textarea>
+        <textarea class="form-input" name="description" id="description" placeholder=" "><?= isset($data['description']) ? Securite::secureHTML(($data['description'])) : ''; ?></textarea>
         <label class="form-label" for="description">Description</label>
     </div>
     <div class="form-field-select">
