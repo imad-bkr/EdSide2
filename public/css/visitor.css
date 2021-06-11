@@ -217,9 +217,8 @@ p {
 }
 
 .member-desc {
-    width: 65ch;
+    max-width: 65ch;
 }
-
 
 @media only screen and (max-width: 1070px) {
     .presentation,
